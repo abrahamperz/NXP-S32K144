@@ -25,3 +25,21 @@ arm-none-eabi-size --format=berkeley  interruption_toggle_led.elf
    1560	      0	   3072	   4632	   1218	interruption_toggle_led.elf
 Finished building: interruption_toggle_led.siz
  
+11:05:43 **** Incremental Build of configuration Debug for project stepper_motor_delay ****
+make -j4 all 
+Executing target #6 stepper_motor_delay.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  stepper_motor_delay.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1624	     16	   3072	   4712	   1268	stepper_motor_delay.elf
+Finished building: stepper_motor_delay.siz
+ 
+11:06:14 **** Incremental Build of configuration Debug for project interruption_toggle_led ****
+make -j4 all 
+Executing target #6 interruption_toggle_led.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  interruption_toggle_led.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1560	      0	   3072	   4632	   1218	interruption_toggle_led.elf
+Finished building: interruption_toggle_led.siz
+ 

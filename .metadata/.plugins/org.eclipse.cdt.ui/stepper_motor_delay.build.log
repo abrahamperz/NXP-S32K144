@@ -1,4 +1,4 @@
-10:56:32 **** Incremental Build of configuration Debug for project stepper_motor_delay ****
+11:05:43 **** Incremental Build of configuration Debug for project stepper_motor_delay ****
 make -j4 all 
 Executing target #6 stepper_motor_delay.siz
 Invoking: Standard S32DS Print Size
@@ -8,5 +8,5 @@ arm-none-eabi-size --format=berkeley  stepper_motor_delay.elf
 Finished building: stepper_motor_delay.siz
  
 
-10:56:33 Build Finished (took 359ms)
+11:05:43 Build Finished (took 351ms)
 

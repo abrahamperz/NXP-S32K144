@@ -17,7 +17,8 @@ int main(void)
 	//PORTD->PCR[15]=0x00000100;
 	//PORTD->PCR[16]=0x00000100;
 
-	//Port Data direction PDDR Activar todos Chapter 13 page 218
+	//Port Data direction PDDR Activar GPIO Chapter 13 page 218
+	//Activamos los pines de los puertos elegidos
 	PTD->PDDR=0x00018001;
 
 
