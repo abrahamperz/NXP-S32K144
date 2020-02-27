@@ -1,0 +1,55 @@
+19:57:39 **** Incremental Build of configuration Debug for project timer ****
+make -j4 all 
+Building file: ../Project_Settings/Startup_Code/startup.c
+Building file: ../Project_Settings/Startup_Code/startup_S32K144.S
+Building file: ../Project_Settings/Startup_Code/system_S32K144.c
+Building file: ../src/main.c
+Executing target #1 ../Project_Settings/Startup_Code/startup.c
+Executing target #2 ../Project_Settings/Startup_Code/startup_S32K144.S
+Executing target #3 ../Project_Settings/Startup_Code/system_S32K144.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+Invoking: Standard S32DS Assembler
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/startup.args" -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/startup_S32K144.args" -o "Project_Settings/Startup_Code/startup_S32K144.o" "../Project_Settings/Startup_Code/startup_S32K144.S"
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/system_S32K144.args" -MMD -MP -MF"Project_Settings/Startup_Code/system_S32K144.d" -MT"Project_Settings/Startup_Code/system_S32K144.o" -o "Project_Settings/Startup_Code/system_S32K144.o" "../Project_Settings/Startup_Code/system_S32K144.c"
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c:2:23: warning: "/*" within comment [-Wcomment]
+  #include "S32K144.h" /* include peripheral declarations S32K144 */
+ ^
+../src/main.c: In function 'main':
+../src/main.c:17:2: error: 'PCC' undeclared (first use in this function)
+  PCC->PCCn[PCC_PORTB_INDEX]=0X40000000;
+  ^
+../src/main.c:17:2: note: each undeclared identifier is reported only once for each function it appears in
+../src/main.c:17:12: error: 'PCC_PORTB_INDEX' undeclared (first use in this function)
+  PCC->PCCn[PCC_PORTB_INDEX]=0X40000000;
+            ^
+../src/main.c:18:12: error: 'PCC_PORTC_INDEX' undeclared (first use in this function)
+  PCC->PCCn[PCC_PORTC_INDEX]=0X40000000;
+            ^
+../src/main.c:20:3: error: 'PORTB' undeclared (first use in this function)
+   PORTB->PCR[14]=0X00000100;
+   ^
+../src/main.c:24:3: error: 'PORTC' undeclared (first use in this function)
+   PORTC->PCR[12]=0X00000100;
+   ^
+../src/main.c:27:3: error: 'PTB' undeclared (first use in this function)
+   PTB->PDDR=0X0003C000;
+   ^
+../src/main.c:31:18: error: 'PTC' undeclared (first use in this function)
+            if (((PTC->PDIR)&(0x00001000))==0) PTB->PDOR=secuencia[i++%4];
+                  ^
+make: *** [src/subdir.mk:35: src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+Finished building: ../Project_Settings/Startup_Code/startup_S32K144.S
+ 
+Finished building: ../Project_Settings/Startup_Code/startup.c
+Finished building: ../Project_Settings/Startup_Code/system_S32K144.c
+ 
+ 
+
+19:57:40 Build Finished (took 973ms)
+

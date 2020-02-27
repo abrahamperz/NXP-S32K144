@@ -1,0 +1,12 @@
+11:02:44 **** Incremental Build of configuration Debug for project interruption_toggle_led ****
+make -j4 all 
+Executing target #6 interruption_toggle_led.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  interruption_toggle_led.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1560	      0	   3072	   4632	   1218	interruption_toggle_led.elf
+Finished building: interruption_toggle_led.siz
+ 
+
+11:02:44 Build Finished (took 376ms)
+

@@ -1,0 +1,24 @@
+10:56:45 **** Incremental Build of configuration Debug for project led_delay ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: led_delay.elf
+Executing target #5 led_delay.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "led_delay.elf" "@led_delay.args"   
+Finished building target: led_delay.elf
+ 
+Executing target #6 led_delay.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  led_delay.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1532	      0	   3072	   4604	   11fc	led_delay.elf
+Finished building: led_delay.siz
+ 
+
+10:56:46 Build Finished (took 1s.427ms)
+

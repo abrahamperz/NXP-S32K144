@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
-<workingSet factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1582235166313_1" label="Other Projects" name="Other Projects">
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/blue_led" type="4"/>
-</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1582235166313_1" label="Other Projects" name="Other Projects"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1582234748227_0" label="Window Working Set" name="Aggregate for window 1582234748227"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1582765806100_2" label="Window Working Set" name="Aggregate for window 1582765806100"/>
 </workingSetManager>

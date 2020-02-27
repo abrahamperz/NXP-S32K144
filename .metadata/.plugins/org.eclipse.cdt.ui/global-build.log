@@ -1,21 +1,27 @@
-15:51:00 **** Incremental Build of configuration Debug for project diagonal_led ****
+11:02:10 **** Incremental Build of configuration Debug for project interruption_toggle_led ****
 make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: diagonal_led.elf
-Executing target #5 diagonal_led.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "diagonal_led.elf" "@diagonal_led.args"   
-Finished building target: diagonal_led.elf
- 
-Executing target #6 diagonal_led.siz
+Executing target #6 interruption_toggle_led.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  diagonal_led.elf 
+arm-none-eabi-size --format=berkeley  interruption_toggle_led.elf 
    text	   data	    bss	    dec	    hex	filename
-   1580	      0	   3072	   4652	   122c	diagonal_led.elf
-Finished building: diagonal_led.siz
+   1560	      0	   3072	   4632	   1218	interruption_toggle_led.elf
+Finished building: interruption_toggle_led.siz
+ 
+11:02:16 **** Incremental Build of configuration Debug for project interruption_toggle_led ****
+make -j4 all 
+Executing target #6 interruption_toggle_led.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  interruption_toggle_led.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1560	      0	   3072	   4632	   1218	interruption_toggle_led.elf
+Finished building: interruption_toggle_led.siz
+ 
+11:02:44 **** Incremental Build of configuration Debug for project interruption_toggle_led ****
+make -j4 all 
+Executing target #6 interruption_toggle_led.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  interruption_toggle_led.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1560	      0	   3072	   4632	   1218	interruption_toggle_led.elf
+Finished building: interruption_toggle_led.siz
  
