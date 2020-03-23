@@ -1,5 +1,0 @@
-"FreeRTOS Task Aware Debugger for GDB" version 1.0.1 (201610061345)
-(c) 2016 NXP Semiconductors, Inc.
-==================================
-11:05:43.152 INFO: [TadModel] DSF session ID 5 has started.
-11:05:44.214 INFO: [TadModel] DSF session ID 5 has ended.
