@@ -1,0 +1,12 @@
+18:43:57 **** Incremental Build of configuration Debug for project timer_led ****
+make -j4 all 
+Executing target #6 timer_led.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  timer_led.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1624	      0	   3072	   4696	   1258	timer_led.elf
+Finished building: timer_led.siz
+ 
+
+18:43:58 Build Finished (took 330ms)
+

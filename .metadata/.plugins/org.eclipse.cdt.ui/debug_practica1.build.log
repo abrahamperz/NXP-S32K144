@@ -1,0 +1,24 @@
+18:24:13 **** Incremental Build of configuration Debug for project debug_practica1 ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: debug_practica1.elf
+Executing target #5 debug_practica1.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "debug_practica1.elf" "@debug_practica1.args"   
+Finished building target: debug_practica1.elf
+ 
+Executing target #6 debug_practica1.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  debug_practica1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1704	      0	   3072	   4776	   12a8	debug_practica1.elf
+Finished building: debug_practica1.siz
+ 
+
+18:24:14 Build Finished (took 866ms)
+

@@ -1,0 +1,12 @@
+"./src/main.o"
+"./Project_Settings/Startup_Code/system_SKEAZ1284.o"
+"./Project_Settings/Startup_Code/startup_SKEAZ1284.o"
+-T
+"D:/Documentos/SemestresTec/Semestre_i/Microcontroladores/NXP-S32K144/timer_toggle_led_delay/Project_Settings/Linker_Files/SKEAZ_flash.ld"
+-Wl,-Map,"timer_toggle_led_delay.map"
+-Xlinker
+--gc-sections
+-mcpu=cortex-m0plus
+-mthumb
+-specs=ewl_c9x_noio.specs
+--sysroot="D:/NXP/S32DS_ARM_v2018.R1/S32DS/arm_ewl2"

@@ -1,0 +1,12 @@
+20:03:35 **** Incremental Build of configuration Debug for project Toggle_led_delay_LPTMR_polling ****
+make -j4 all 
+Executing target #6 Toggle_led_delay_LPTMR_polling.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Toggle_led_delay_LPTMR_polling.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1624	      0	   3072	   4696	   1258	Toggle_led_delay_LPTMR_polling.elf
+Finished building: Toggle_led_delay_LPTMR_polling.siz
+ 
+
+20:03:35 Build Finished (took 436ms)
+

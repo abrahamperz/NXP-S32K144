@@ -1,506 +1,16 @@
-09:20:20 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1544	      0	   3072	   4616	   1208	practica1.elf
-Finished building: practica1.siz
- 
-09:20:41 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1544	      0	   3072	   4616	   1208	practica1.elf
-Finished building: practica1.siz
- 
-09:22:10 **** Incremental Build of configuration Debug for project practica1 ****
+20:12:14 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
 Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:14:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1600	      0	   3072	   4672	   1240	practica1.elf
-Finished building: practica1.siz
- 
-09:23:14 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:14:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1604	      0	   3072	   4676	   1244	practica1.elf
-Finished building: practica1.siz
- 
-09:24:27 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:14:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1552	      0	   3072	   4624	   1210	practica1.elf
-Finished building: practica1.siz
- 
-09:25:05 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1604	      0	   3072	   4676	   1244	practica1.elf
-Finished building: practica1.siz
- 
-09:25:36 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1600	      0	   3072	   4672	   1240	practica1.elf
-Finished building: practica1.siz
- 
-09:25:58 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1604	      0	   3072	   4676	   1244	practica1.elf
-Finished building: practica1.siz
- 
-09:28:33 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:20:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1624	      0	   3072	   4696	   1258	practica1.elf
-Finished building: practica1.siz
- 
-09:28:36 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1624	      0	   3072	   4696	   1258	practica1.elf
-Finished building: practica1.siz
- 
-09:30:05 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:20:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:30:38 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:20:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:31:24 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:20:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:32:10 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:20:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1684	      0	   3072	   4756	   1294	practica1.elf
-Finished building: practica1.siz
- 
-09:32:59 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:16:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1684	      0	   3072	   4756	   1294	practica1.elf
-Finished building: practica1.siz
- 
-09:40:24 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:40:43 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:41:15 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:41:30 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:41:54 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:42:09 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-09:42:30 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:15:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1688	      0	   3072	   4760	   1298	practica1.elf
-Finished building: practica1.siz
- 
-10:06:00 **** Incremental Build of configuration Debug for project stepper_motor_delay ****
+../src/main.c: In function 'LPTMR0_IRQHandler':
+../src/main.c:11:38: error: 'i' undeclared (first use in this function)
+  if (direccion) PTB->PDOR=secuencia[(i++)%4];
+                                      ^
+../src/main.c:11:38: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [src/subdir.mk:35: src/main.o] Error 1
+20:13:00 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -508,54 +18,20 @@ Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: stepper_motor_delay.elf
-Executing target #5 stepper_motor_delay.elf
+Building target: Stepper_LPTRM0_e_Intr_Externa.elf
+Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
 Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "stepper_motor_delay.elf" "@stepper_motor_delay.args"   
-Finished building target: stepper_motor_delay.elf
+arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
+Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
  
-Executing target #6 stepper_motor_delay.siz
+Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  stepper_motor_delay.elf 
+arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
    text	   data	    bss	    dec	    hex	filename
-   1624	     16	   3072	   4712	   1268	stepper_motor_delay.elf
-Finished building: stepper_motor_delay.siz
+   1680	     16	   3080	   4776	   12a8	Stepper_LPTRM0_e_Intr_Externa.elf
+Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
  
-10:06:45 **** Incremental Build of configuration Debug for project stepper_motor_delay ****
-make -j4 all 
-Executing target #6 stepper_motor_delay.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  stepper_motor_delay.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1624	     16	   3072	   4712	   1268	stepper_motor_delay.elf
-Finished building: stepper_motor_delay.siz
- 
-10:10:55 **** Incremental Build of configuration Debug for project practica1 ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:13:15: warning: unused variable 'i' [-Wunused-variable]
- unsigned char i;
-               ^
-Finished building: ../src/main.c
- 
-Building target: practica1.elf
-Executing target #5 practica1.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
- 
-Executing target #6 practica1.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1664	      0	   3072	   4736	   1280	practica1.elf
-Finished building: practica1.siz
- 
-10:18:25 **** Incremental Build of configuration Debug for project practica1 ****
+20:14:31 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -563,16 +39,88 @@ Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: practica1.elf
-Executing target #5 practica1.elf
+Building target: Stepper_LPTRM0_e_Intr_Externa.elf
+Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
 Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "practica1.elf" "@practica1.args"   
-Finished building target: practica1.elf
+arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
+Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
  
-Executing target #6 practica1.siz
+Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  practica1.elf 
+arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
    text	   data	    bss	    dec	    hex	filename
-   1664	      0	   3072	   4736	   1280	practica1.elf
-Finished building: practica1.siz
+   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
+Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
+ 
+20:18:59 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Stepper_LPTRM0_e_Intr_Externa.elf
+Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
+Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
+ 
+Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
+Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
+ 
+20:21:46 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Stepper_LPTRM0_e_Intr_Externa.elf
+Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
+Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
+ 
+Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
+Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
+ 
+20:24:02 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Stepper_LPTRM0_e_Intr_Externa.elf
+Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
+Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
+ 
+Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
+Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
+ 
+20:24:18 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+make -j4 all 
+Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
+Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
  

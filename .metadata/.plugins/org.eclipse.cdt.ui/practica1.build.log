@@ -1,4 +1,4 @@
-10:18:25 **** Incremental Build of configuration Debug for project practica1 ****
+14:08:24 **** Incremental Build of configuration Debug for project practica1 ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -16,9 +16,9 @@ Executing target #6 practica1.siz
 Invoking: Standard S32DS Print Size
 arm-none-eabi-size --format=berkeley  practica1.elf 
    text	   data	    bss	    dec	    hex	filename
-   1664	      0	   3072	   4736	   1280	practica1.elf
+   1696	      0	   3072	   4768	   12a0	practica1.elf
 Finished building: practica1.siz
  
 
-10:18:27 Build Finished (took 1s.499ms)
+14:08:25 Build Finished (took 1s.35ms)
 

@@ -1,0 +1,16 @@
+-I"D:/Documentos/SemestresTec/Semestre_i/Microcontroladores/NXP-S32K144/timer_toggle_led_delay/include"
+-I"D:/NXP/S32DS_ARM_v2018.R1/S32DS/arm_ewl2/EWL_C/include"
+-I"D:/NXP/S32DS_ARM_v2018.R1/S32DS/arm_ewl2/EWL_C/include/arm"
+-I"D:/NXP/S32DS_ARM_v2018.R1/S32DS/arm_ewl2/EWL_Runtime/include"
+-I"D:/NXP/S32DS_ARM_v2018.R1/S32DS/arm_ewl2/EWL_Runtime/include/arm"
+-O0
+-g3
+-Wall
+-c
+-fmessage-length=0
+-ffunction-sections
+-fdata-sections
+-mcpu=cortex-m0plus
+-mthumb
+-specs=ewl_c9x_noio.specs
+--sysroot="D:/NXP/S32DS_ARM_v2018.R1/S32DS/arm_ewl2"
