@@ -1,16 +1,61 @@
-20:12:14 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+14:36:24 **** Build of configuration Debug for project ADC ****
 make -j4 all 
+Building file: ../Project_Settings/Startup_Code/startup.c
+Building file: ../Project_Settings/Startup_Code/startup_S32K144.S
+Building file: ../Project_Settings/Startup_Code/system_S32K144.c
 Building file: ../src/main.c
+Executing target #1 ../Project_Settings/Startup_Code/startup.c
+Executing target #2 ../Project_Settings/Startup_Code/startup_S32K144.S
+Executing target #3 ../Project_Settings/Startup_Code/system_S32K144.c
 Executing target #4 ../src/main.c
 Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/startup.args" -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
+Invoking: Standard S32DS C Compiler
+Invoking: Standard S32DS Assembler
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/system_S32K144.args" -MMD -MP -MF"Project_Settings/Startup_Code/system_S32K144.d" -MT"Project_Settings/Startup_Code/system_S32K144.o" -o "Project_Settings/Startup_Code/system_S32K144.o" "../Project_Settings/Startup_Code/system_S32K144.c"
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/startup_S32K144.args" -o "Project_Settings/Startup_Code/startup_S32K144.o" "../Project_Settings/Startup_Code/startup_S32K144.S"
+Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'LPTMR0_IRQHandler':
-../src/main.c:11:38: error: 'i' undeclared (first use in this function)
-  if (direccion) PTB->PDOR=secuencia[(i++)%4];
-                                      ^
-../src/main.c:11:38: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [src/subdir.mk:35: src/main.o] Error 1
-20:13:00 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+Finished building: ../Project_Settings/Startup_Code/startup_S32K144.S
+Finished building: ../Project_Settings/Startup_Code/startup.c
+Finished building: ../Project_Settings/Startup_Code/system_S32K144.c
+ 
+ 
+Finished building: ../src/main.c
+ 
+ 
+Building target: ADC.elf
+Executing target #5 ADC.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
+Finished building target: ADC.elf
+ 
+Executing target #6 ADC.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1456	      0	   3072	   4528	   11b0	ADC.elf
+Finished building: ADC.siz
+ 
+14:37:07 **** Incremental Build of configuration Debug for project ADC ****
+make -j4 all 
+Executing target #6 ADC.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1456	      0	   3072	   4528	   11b0	ADC.elf
+Finished building: ADC.siz
+ 
+14:37:52 **** Incremental Build of configuration Debug for project ADC ****
+make -j4 all 
+Executing target #6 ADC.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1456	      0	   3072	   4528	   11b0	ADC.elf
+Finished building: ADC.siz
+ 
+14:38:10 **** Incremental Build of configuration Debug for project ADC ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -18,20 +63,20 @@ Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: Stepper_LPTRM0_e_Intr_Externa.elf
-Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
+Building target: ADC.elf
+Executing target #5 ADC.elf
 Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
-Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
+arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
+Finished building target: ADC.elf
  
-Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
+Executing target #6 ADC.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
+arm-none-eabi-size --format=berkeley  ADC.elf 
    text	   data	    bss	    dec	    hex	filename
-   1680	     16	   3080	   4776	   12a8	Stepper_LPTRM0_e_Intr_Externa.elf
-Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
+   1640	      0	   3072	   4712	   1268	ADC.elf
+Finished building: ADC.siz
  
-20:14:31 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+13:57:13 **** Incremental Build of configuration Debug for project ADC ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -39,20 +84,20 @@ Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: Stepper_LPTRM0_e_Intr_Externa.elf
-Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
+Building target: ADC.elf
+Executing target #5 ADC.elf
 Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
-Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
+arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
+Finished building target: ADC.elf
  
-Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
+Executing target #6 ADC.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
+arm-none-eabi-size --format=berkeley  ADC.elf 
    text	   data	    bss	    dec	    hex	filename
-   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
-Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
+   1640	      0	   3072	   4712	   1268	ADC.elf
+Finished building: ADC.siz
  
-20:18:59 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+13:59:11 **** Incremental Build of configuration Debug for project ADC ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -60,20 +105,20 @@ Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: Stepper_LPTRM0_e_Intr_Externa.elf
-Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
+Building target: ADC.elf
+Executing target #5 ADC.elf
 Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
-Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
+arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
+Finished building target: ADC.elf
  
-Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
+Executing target #6 ADC.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
+arm-none-eabi-size --format=berkeley  ADC.elf 
    text	   data	    bss	    dec	    hex	filename
-   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
-Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
+   1648	      0	   3072	   4720	   1270	ADC.elf
+Finished building: ADC.siz
  
-20:21:46 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+15:05:16 **** Incremental Build of configuration Debug for project PWM_LPTimer_1_introduction ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -81,46 +126,16 @@ Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: Stepper_LPTRM0_e_Intr_Externa.elf
-Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
+Building target: PWM_LPTimer_1_introduction.elf
+Executing target #5 PWM_LPTimer_1_introduction.elf
 Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
-Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
+arm-none-eabi-gcc -o "PWM_LPTimer_1_introduction.elf" "@PWM_LPTimer_1_introduction.args"   
+Finished building target: PWM_LPTimer_1_introduction.elf
  
-Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
+Executing target #6 PWM_LPTimer_1_introduction.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
+arm-none-eabi-size --format=berkeley  PWM_LPTimer_1_introduction.elf 
    text	   data	    bss	    dec	    hex	filename
-   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
-Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
- 
-20:24:02 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: Stepper_LPTRM0_e_Intr_Externa.elf
-Executing target #5 Stepper_LPTRM0_e_Intr_Externa.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "Stepper_LPTRM0_e_Intr_Externa.elf" "@Stepper_LPTRM0_e_Intr_Externa.args"   
-Finished building target: Stepper_LPTRM0_e_Intr_Externa.elf
- 
-Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
-Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
- 
-20:24:18 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
-make -j4 all 
-Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1740	     16	   3080	   4836	   12e4	Stepper_LPTRM0_e_Intr_Externa.elf
-Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
+   1704	      4	   3080	   4788	   12b4	PWM_LPTimer_1_introduction.elf
+Finished building: PWM_LPTimer_1_introduction.siz
  

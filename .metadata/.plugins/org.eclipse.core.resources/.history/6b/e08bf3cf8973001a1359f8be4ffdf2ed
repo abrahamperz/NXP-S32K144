@@ -1,0 +1,33 @@
+
+#include "S32K144.h"
+
+void ADC0_IRQHandler (void)
+{
+	if(ADC0->R[0]<0x40) PTD->PDOR=(1<<16)+1;//prender led rojo. ADC0->R[0] apagar bandera coco. si es menor a 40
+	if((ADC0->R[0]>=0x40)&&(ADC0->R[0]<0x80)) PTD->PDOR=(1<<16)+(1<<15); //led azul. si es mayor o igual a 40 y menor a 80
+	if (ADC0->R[0]>=0x80) PTD->PDOR=(1<<15)+1; //led verde. si es mayor o igual a 80
+}
+
+int main(void)
+{
+	PCC->PCCn[PCC_PORTD_INDEX]=(1<<30); //conf reloj en puerto d
+	PORTD->PCR[16]=(1<<8); //GPIO
+	PORTD->PCR[15]=(1<<8); //GPIO
+	PORTD->PCR[0]=(1<<8); //GPIO
+	PTD->PDDR=(1<<16)+(1<<15)+1; //outputs
+	PTD->PDOR=(1<<16)+(1<<15)+1; //estado inicial off, escribimos 1 para apagar leds
+
+	PCC->PCCn[PCC_ADC0_INDEX]=(2<<24);  // 2<<24 por el PCS y SIRCDIV2 (010) pag. 536, 624. PCS -> GCS=0
+	PCC->PCCn[PCC_ADC0_INDEX]|=(1<<30); //30=interfaz. agregamos este bit al anterior con or
+
+	SCG->SIRCDIV=(1<<8); //SIRCDIV2=8MHz/1 (001=divide by 1 p.577)
+
+	ADC0->CFG1=(2<<5); //pag. 1073. Clk /4. Modo 8 bits (00), ALTCLK1 de PCC (00). pag. 550
+	ADC0->SC1[0]=(1<<6)+12; // 6=AIEN (hab interrupcion ADC). 12=posiciON potenciometro
+
+	S32_NVIC->ISER[39/32]=(1<<(39%32)); // hab. intr para ADC0 (39)
+
+	while(1);
+
+	return 0;
+        }

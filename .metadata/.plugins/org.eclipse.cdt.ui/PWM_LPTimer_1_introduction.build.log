@@ -1,0 +1,24 @@
+15:05:16 **** Incremental Build of configuration Debug for project PWM_LPTimer_1_introduction ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: PWM_LPTimer_1_introduction.elf
+Executing target #5 PWM_LPTimer_1_introduction.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "PWM_LPTimer_1_introduction.elf" "@PWM_LPTimer_1_introduction.args"   
+Finished building target: PWM_LPTimer_1_introduction.elf
+ 
+Executing target #6 PWM_LPTimer_1_introduction.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  PWM_LPTimer_1_introduction.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1704	      4	   3080	   4788	   12b4	PWM_LPTimer_1_introduction.elf
+Finished building: PWM_LPTimer_1_introduction.siz
+ 
+
+15:05:17 Build Finished (took 1s.734ms)
+

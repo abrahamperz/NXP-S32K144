@@ -8297,3 +8297,252 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+!SESSION 2020-03-30 12:49:45.803 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_MX
+Framework arguments:  -product com.nxp.s32ds.arm.ide.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.nxp.s32ds.arm.ide.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-03-30 12:52:57.769
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-03-30 12:53:39.967
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\abrah'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 13:42:48.594
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 13:42:48.599
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 13:43:04.855
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 13:43:04.864
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 13:43:04.872
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v8.0.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 13:43:08.372
+!MESSAGE AddConfig: Added config Name=Debug_RAM
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-03-30 13:43:20.026
+!MESSAGE Indexed 'PWM_LPTimer_1_introduction' (3 sources, 17 headers) in 0.687 sec: 1,108 declarations; 1,547 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-03-30 14:14:13.074
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-03-30 14:14:13.083
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-30 14:14:23.340
+!MESSAGE Request monitor: 'Sequence "", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-30 14:14:23.355
+!MESSAGE Request monitor: 'Sequence "Initializing debugger services", result for executing step #0 = Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-30 14:14:23.367
+!MESSAGE Request monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@1de9897): Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null' resulted in a cancel status: Status CANCEL: com.pemicro.debug.gdbjtag.pne code=1 PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated. null, even though the request is not set to cancel.
+
+!ENTRY com.pemicro.debug.gdbjtag.pne 4 5012 2020-03-30 14:14:23.388
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:424)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:387)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:312)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+!SUBENTRY 1 com.pemicro.debug.gdbjtag.pne 8 1 2020-03-30 14:14:23.418
+!MESSAGE PEmicro GDB Launch Failure : Another GDB Server debug session is alreadyusing the same Server Port number. To run simultaneous debug sessions, please specify a unique Server Port and GDBMI Port in the Debug Configuration for each project. If another session is not running simultaneously, make sure that the pegdbserver_console and the arm-none-eabi-gdb processes have terminated.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-30 14:14:54.465
+!MESSAGE Request for monitor: '44^error,msg="No symbol "pxReadyTasksLists" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-03-30 14:14:54.465
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression sizeof(pxReadyTasksLists)
+Error message from debugger back end:
+No symbol "pxReadyTasksLists" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pxReadyTasksLists" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:941)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:770)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-30 14:14:54.476
+!MESSAGE Request for monitor: '45^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-03-30 14:14:54.476
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:941)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:770)
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 14:33:36.922
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 14:33:36.928
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 14:35:39.499
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 14:35:39.506
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 14:35:45.272
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 14:35:45.277
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 14:35:45.282
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v8.0.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-30 14:35:48.446
+!MESSAGE AddConfig: Added config Name=Debug_RAM
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-03-30 14:35:55.902
+!MESSAGE Indexed 'ADC' (3 sources, 17 headers) in 0.571 sec: 1,108 declarations; 1,547 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-30 15:26:09.997
+!MESSAGE Request for monitor: 'RequestMonitor (com.nxp.freertos.gdb.tad.model.readers.VariableReader$1@1e16ce9): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2020-03-30 15:26:09.997
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-30 15:26:10.003
+!MESSAGE Request for monitor: 'RequestMonitor (com.freescale.mqx.gdb.tad.model.VariableReader$1@1dcf22d): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Connection is shut down null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2020-03-30 15:26:10.003
+!MESSAGE Connection is shut down
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-03-30 15:26:10.293
+!MESSAGE The workspace will exit with unsaved changes in this session.
+
+!ENTRY org.eclipse.core.jobs 2 2 2020-03-30 15:26:12.302
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob
+!SESSION 2020-03-31 12:48:40.060 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_MX
+Framework arguments:  -product com.nxp.s32ds.arm.ide.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.nxp.s32ds.arm.ide.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-03-31 12:48:50.678
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-03-31 12:49:12.205
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\abrah'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-03-31 13:57:12.128
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-03-31 13:57:12.138
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-31 13:58:15.300
+!MESSAGE Request for monitor: '43^error,msg="No symbol "pxReadyTasksLists" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-03-31 13:58:15.300
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression sizeof(pxReadyTasksLists)
+Error message from debugger back end:
+No symbol "pxReadyTasksLists" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pxReadyTasksLists" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:941)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:770)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-31 13:58:15.397
+!MESSAGE Request for monitor: '44^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-03-31 13:58:15.397
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:941)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:770)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-31 13:59:28.823
+!MESSAGE Request for monitor: '45^error,msg="No symbol "pxReadyTasksLists" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-03-31 13:59:28.823
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression sizeof(pxReadyTasksLists)
+Error message from debugger back end:
+No symbol "pxReadyTasksLists" in current context.
+!STACK 0
+java.lang.Exception: No symbol "pxReadyTasksLists" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:941)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:770)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-03-31 13:59:28.830
+!MESSAGE Request for monitor: '46^error,msg="No symbol "_mqx_kernel_data" in current context."' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-03-31 13:59:28.830
+!MESSAGE Failed to execute MI command:
+-data-evaluate-expression _mqx_kernel_data
+Error message from debugger back end:
+No symbol "_mqx_kernel_data" in current context.
+!STACK 0
+java.lang.Exception: No symbol "_mqx_kernel_data" in current context.
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:941)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:770)
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-31 14:24:53.116
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-31 14:24:53.121
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-31 14:24:56.086
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-31 14:24:56.100
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-31 14:24:56.112
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v8.0.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-03-31 14:25:01.543
+!MESSAGE AddConfig: Added config Name=Debug_RAM
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-03-31 14:25:07.971
+!MESSAGE Indexed 'LPIT_PWM_motor_bidireccional' (3 sources, 15 headers) in 1.67 sec: 1,101 declarations; 1,482 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)
+!SESSION 2020-03-31 19:47:37.183 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_MX
+Framework arguments:  -product com.nxp.s32ds.arm.ide.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.nxp.s32ds.arm.ide.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-03-31 19:49:43.739
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-03-31 19:50:06.421
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\abrah'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
