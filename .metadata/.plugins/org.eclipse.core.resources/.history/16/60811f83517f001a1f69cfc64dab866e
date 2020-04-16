@@ -1,0 +1,148 @@
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+#define T 4000000
+
+unsigned char duty_cycle=100;
+unsigned char espejo_pin;
+
+/*
+LPIT0_Ch0 = adelante
+LPIT0_Ch1 = atras
+LPITO_Ch2 = derecha
+Lpito_Ch3 = izquierda
+
+Activamos con pulsos el puente h
+Motor derecho
+7 adelante
+15 atras
+
+Motor izquierdo
+14 adelante
+17 atras
+
+*/
+
+void LPIT0_Ch0_IRQHandler (void)
+
+{
+	S32_NVIC->ISER[48/32]=(1<<(48%32));
+	LPIT0->MSR=1;					//Borrar bandera
+	LPIT0->TMR[0].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+
+	PTC->PTOR=(1<<7)+(1<<14); //Seleccionamos pines 7 y 14;
+
+	if (espejo_pin==1)
+	{
+		espejo_pin=0;
+		LPIT0->TMR[0].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+	}
+	else
+	{
+		espejo_pin=1;
+		LPIT0->TMR[0].TVAL=((((unsigned int)duty_cycle)*T)/100);
+	}
+	LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
+
+}
+void LPIT0_Ch1_IRQHandler (void)
+{
+	S32_NVIC->ISER[48/32]=(1<<(48%32));
+	LPIT0->MSR=1;					//Borrar bandera
+	LPIT0->TMR[1].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+
+	PTC->PTOR=(1<<15)+(1<<17); //Seleccionamos pines 15 y 17;
+
+	if (espejo_pin==1)
+	{
+		espejo_pin=0;
+		LPIT0->TMR[1].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+	}
+	else
+	{
+		espejo_pin=1;
+		LPIT0->TMR[1].TVAL=((((unsigned int)duty_cycle)*T)/100);
+	}
+	LPIT0->TMR[1].TCTRL|=(1<<0);		//Enable->Trigger
+}
+void LPIT0_Ch2_IRQHandler (void)
+{
+	S32_NVIC->ISER[48/32]=(1<<(48%32));
+	LPIT0->MSR=1;					//Borrar bandera
+	LPIT0->TMR[2].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+
+	PTC->PTOR=(1<<7)+(1<<17); //Seleccionamos pines 7 y 17;
+
+	if (espejo_pin==1)
+	{
+		espejo_pin=0;
+		LPIT0->TMR[2].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+	}
+	else
+	{
+		espejo_pin=1;
+		LPIT0->TMR[2].TVAL=((((unsigned int)duty_cycle)*T)/100);
+	}
+	LPIT0->TMR[2].TCTRL|=(1<<0);		//Enable->Trigger
+}
+void LPIT0_Ch3_IRQHandler (void)
+{
+	S32_NVIC->ISER[48/32]=(1<<(48%32));
+	LPIT0->MSR=1;					//Borrar bandera
+	LPIT0->TMR[3].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+
+	PTC->PTOR=(1<<15)+(1<<14); //Seleccionamos pines 15 y 14;
+
+	if (espejo_pin==1)
+	{
+		espejo_pin=0;
+		LPIT0->TMR[3].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+	}
+	else
+	{
+		espejo_pin=1;
+		LPIT0->TMR[3].TVAL=((((unsigned int)duty_cycle)*T)/100);
+	}
+	LPIT0->TMR[3].TCTRL|=(1<<0);		//Enable->Trigger
+}
+void LPIT0_AllCh_Init(void)
+{
+
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	SCG->SIRCDIV=(1<<8);  //8MHz/1
+
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[0].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<16);
+	LPIT0->TMR[1].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<16);
+	LPIT0->TMR[2].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<16);
+	LPIT0->TMR[3].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<16);
+
+}
+void PORTC_init(void){
+	PCC->PCCn[PCC_PORTC_INDEX]=(1<<30);
+	PORTC->PCR[7]=(1<<8);
+	PORTC->PCR[15]=(1<<8);
+	PORTC->PCR[17]=(1<<8);
+	PORTC->PCR[14]=(1<<8);
+	PTC->PDDR=(1<<7)+(1<<15)+(1<<17)+(1<<14);
+	PTC->PDOR=0;
+}
+int main(void)
+{
+	PORTC_init();
+	LPIT0_AllCh_Init();
+	espejo_pin=0;
+
+	//LPIT0->TMR[0].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+	//LPIT0->MIER=1;					//Interrupt Enable TMR0
+	//LPIT0->TMR[0].TCTRL|=1;			//Hab conteo
+
+
+
+	while (1);
+
+	return 0;
+}

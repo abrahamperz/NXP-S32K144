@@ -1,61 +1,4 @@
-14:36:24 **** Build of configuration Debug for project ADC ****
-make -j4 all 
-Building file: ../Project_Settings/Startup_Code/startup.c
-Building file: ../Project_Settings/Startup_Code/startup_S32K144.S
-Building file: ../Project_Settings/Startup_Code/system_S32K144.c
-Building file: ../src/main.c
-Executing target #1 ../Project_Settings/Startup_Code/startup.c
-Executing target #2 ../Project_Settings/Startup_Code/startup_S32K144.S
-Executing target #3 ../Project_Settings/Startup_Code/system_S32K144.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@Project_Settings/Startup_Code/startup.args" -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
-Invoking: Standard S32DS C Compiler
-Invoking: Standard S32DS Assembler
-arm-none-eabi-gcc "@Project_Settings/Startup_Code/system_S32K144.args" -MMD -MP -MF"Project_Settings/Startup_Code/system_S32K144.d" -MT"Project_Settings/Startup_Code/system_S32K144.o" -o "Project_Settings/Startup_Code/system_S32K144.o" "../Project_Settings/Startup_Code/system_S32K144.c"
-arm-none-eabi-gcc "@Project_Settings/Startup_Code/startup_S32K144.args" -o "Project_Settings/Startup_Code/startup_S32K144.o" "../Project_Settings/Startup_Code/startup_S32K144.S"
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../Project_Settings/Startup_Code/startup_S32K144.S
-Finished building: ../Project_Settings/Startup_Code/startup.c
-Finished building: ../Project_Settings/Startup_Code/system_S32K144.c
- 
- 
-Finished building: ../src/main.c
- 
- 
-Building target: ADC.elf
-Executing target #5 ADC.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
-Finished building target: ADC.elf
- 
-Executing target #6 ADC.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  ADC.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1456	      0	   3072	   4528	   11b0	ADC.elf
-Finished building: ADC.siz
- 
-14:37:07 **** Incremental Build of configuration Debug for project ADC ****
-make -j4 all 
-Executing target #6 ADC.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  ADC.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1456	      0	   3072	   4528	   11b0	ADC.elf
-Finished building: ADC.siz
- 
-14:37:52 **** Incremental Build of configuration Debug for project ADC ****
-make -j4 all 
-Executing target #6 ADC.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  ADC.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1456	      0	   3072	   4528	   11b0	ADC.elf
-Finished building: ADC.siz
- 
-14:38:10 **** Incremental Build of configuration Debug for project ADC ****
+22:23:17 **** Incremental Build of configuration Debug for project movimiento_ruedas ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -63,79 +6,21 @@ Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: ADC.elf
-Executing target #5 ADC.elf
+Building target: movimiento_ruedas.elf
+Executing target #5 movimiento_ruedas.elf
 Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
-Finished building target: ADC.elf
+arm-none-eabi-gcc -o "movimiento_ruedas.elf" "@movimiento_ruedas.args"   
+Finished building target: movimiento_ruedas.elf
  
-Executing target #6 ADC.siz
+Executing target #6 movimiento_ruedas.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  ADC.elf 
+arm-none-eabi-size --format=berkeley  movimiento_ruedas.elf 
    text	   data	    bss	    dec	    hex	filename
-   1640	      0	   3072	   4712	   1268	ADC.elf
-Finished building: ADC.siz
+   2020	      4	   3080	   5104	   13f0	movimiento_ruedas.elf
+Finished building: movimiento_ruedas.siz
  
-13:57:13 **** Incremental Build of configuration Debug for project ADC ****
+22:44:49 **** Incremental Build of configuration Debug for project ADC ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: ADC.elf
-Executing target #5 ADC.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
-Finished building target: ADC.elf
- 
-Executing target #6 ADC.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  ADC.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1640	      0	   3072	   4712	   1268	ADC.elf
-Finished building: ADC.siz
- 
-13:59:11 **** Incremental Build of configuration Debug for project ADC ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: ADC.elf
-Executing target #5 ADC.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
-Finished building target: ADC.elf
- 
-Executing target #6 ADC.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  ADC.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1648	      0	   3072	   4720	   1270	ADC.elf
-Finished building: ADC.siz
- 
-15:05:16 **** Incremental Build of configuration Debug for project PWM_LPTimer_1_introduction ****
-make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: PWM_LPTimer_1_introduction.elf
-Executing target #5 PWM_LPTimer_1_introduction.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "PWM_LPTimer_1_introduction.elf" "@PWM_LPTimer_1_introduction.args"   
-Finished building target: PWM_LPTimer_1_introduction.elf
- 
-Executing target #6 PWM_LPTimer_1_introduction.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  PWM_LPTimer_1_introduction.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1704	      4	   3080	   4788	   12b4	PWM_LPTimer_1_introduction.elf
-Finished building: PWM_LPTimer_1_introduction.siz
- 
+Command canceled

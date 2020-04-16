@@ -1,7 +1,7 @@
 #include "S32K144.h" /* include peripheral declarations S32K144 */
 #define T 4000000
 
-unsigned char duty_cycle=62;
+unsigned char duty_cycle=100;
 unsigned char espejo_pin;
 unsigned char CW=1;
 

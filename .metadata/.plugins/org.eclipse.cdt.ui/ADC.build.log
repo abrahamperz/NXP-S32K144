@@ -1,24 +1,8 @@
-13:59:11 **** Incremental Build of configuration Debug for project ADC ****
+22:44:49 **** Incremental Build of configuration Debug for project ADC ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: ADC.elf
-Executing target #5 ADC.elf
-Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "ADC.elf" "@ADC.args"   
-Finished building target: ADC.elf
- 
-Executing target #6 ADC.siz
-Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  ADC.elf 
-   text	   data	    bss	    dec	    hex	filename
-   1648	      0	   3072	   4720	   1270	ADC.elf
-Finished building: ADC.siz
- 
+Command canceled
 
-13:59:12 Build Finished (took 1s.150ms)
+22:44:50 Build Cancelled (took 1s.351ms)
 

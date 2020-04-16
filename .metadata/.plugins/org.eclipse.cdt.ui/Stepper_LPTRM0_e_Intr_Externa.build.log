@@ -1,4 +1,4 @@
-20:24:18 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
+14:47:46 **** Incremental Build of configuration Debug for project Stepper_LPTRM0_e_Intr_Externa ****
 make -j4 all 
 Executing target #6 Stepper_LPTRM0_e_Intr_Externa.siz
 Invoking: Standard S32DS Print Size
@@ -8,5 +8,5 @@ arm-none-eabi-size --format=berkeley  Stepper_LPTRM0_e_Intr_Externa.elf
 Finished building: Stepper_LPTRM0_e_Intr_Externa.siz
  
 
-20:24:18 Build Finished (took 262ms)
+14:47:46 Build Finished (took 411ms)
 
