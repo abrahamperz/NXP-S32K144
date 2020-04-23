@@ -1,0 +1,52 @@
+/*
+ * main implementation: use this 'C' sample to create your own application
+ *
+ */
+
+
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+#include "math.h"
+#define pi 3.14159
+#define R 8  //Radio de llanta
+#define L 40 //Distancia entre las ruedas
+
+
+int short V1 = 5;
+int short V2 = 5;
+int short Vprom;
+int short vright;
+int short vleft;
+
+int long angulos_right[6]={(0), (pi/4), (-pi/4), (-pi/4) , (pi/4), (0)};
+int long angulos_left[6]={(0), (-pi/4), (pi/4), (pi/4) , (-pi/4), (0)};
+unsigned char theta = 0;
+unsigned char posx;
+unsigned char posy;
+unsigned char dtposx;
+unsigned char dtposy;
+
+int ecuaciones(void){
+	Vprom = (((V1 + V2)/2)*R);
+	vright = ((2*V)+(Theta*L))/(2*R);
+	vleft = ((2*V)-(Theta*L))/(2*R);
+}
+
+int main(void)
+{
+
+ecuaciones();
+
+
+//posx = V * (cos(theta));
+
+//dtposx = V * (sin(theta));
+
+//posy = V * (sin(theta));
+//dtposy = V * (-cos(theta));
+
+
+
+
+
+	return 0;
+}

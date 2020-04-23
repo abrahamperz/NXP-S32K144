@@ -1,0 +1,38 @@
+/*
+ * main implementation: use this 'C' sample to create your own application
+ *
+ */
+
+
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+#include "math.h"
+#define pi 3.14159
+#define radio_llanta 6
+
+int short Vright = 5;
+int short Vleft = 5;
+int short V;
+
+unsigned long angulos[6]={(0), (pi/4), (-pi/4), (-pi/4) , (pi/4), (0)};
+unsigned char theta = 0;
+unsigned char posx;
+unsigned char posy;
+unsigned char dtposx;
+unsigned char dtposy;
+
+int main(void)
+{
+V = (((Vright + Vleft)/2)*radio_llanta);
+
+posx = V * (cos(theta));
+dtposx = V * (sin(theta));
+
+posy = V * (sin(theta));
+dtposy = V * (-cos(theta));
+
+
+
+
+
+	return 0;
+}

@@ -1,0 +1,25 @@
+/*
+ * main implementation: use this 'C' sample to create your own application
+ *
+ */
+
+
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+#include "math.h"
+#define pi 3.1465
+
+unsigned char Vright = 0;
+unsigned char Vleft = 0;
+//unsigned char V = ((Vright + Vleft)/2);
+unsigned long angulos[6]={(0, (pi/4), (-pi/4), (-pi/4) , (pi/4, 0)};
+unsigned char angulo1 = 0;
+unsigned char posx;
+unsigned char posy;
+unsigned char theta;
+int main(void)
+{
+//posx = (V * (cos(theta) );
+
+
+	return 0;
+}

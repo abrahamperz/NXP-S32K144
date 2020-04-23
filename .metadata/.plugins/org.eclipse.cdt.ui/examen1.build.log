@@ -1,0 +1,59 @@
+19:54:30 **** Incremental Build of configuration Debug for project examen1 ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c:49:18: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ unsigned char t0=4000000;
+                  ^
+../src/main.c:50:18: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ unsigned char t1=4000000;
+                  ^
+../src/main.c: In function 'LPIT0_Ch0_IRQHandler':
+../src/main.c:60:27: error: assignment of read-only location '1073967104u->TMR[0]'
+  if (i == 2)LPIT0->TMR[0] = 0; //parar timer y se detiene el robot
+                           ^
+../src/main.c:61:14: warning: statement with no effect [-Wunused-value]
+  if (j == 2) t0 == 3000000; //parar timer y se detiene el robot
+              ^
+../src/main.c: In function 'LPIT0_Ch1_IRQHandler':
+../src/main.c:104:27: error: assignment of read-only location '1073967104u->TMR[1]'
+  if (i == 2)LPIT0->TMR[1] = 0; //parar timer y se detiene el robot
+                           ^
+../src/main.c: In function 'ADC0_IRQHandler':
+../src/main.c:158:16: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
+  if (ADC0->R[0]>1 & ADC0->R[0] < 127) PTC->PDOR=adelante;
+                ^
+../src/main.c:160:23: warning: operation on 'i' may be undefined [-Wsequence-point]
+  if (ADC0->R[0]== 0) i=i++;
+                       ^
+../src/main.c:162:2: warning: 'return' with a value, in function returning void
+  return i;
+  ^
+../src/main.c:163:23: warning: operation on 'j' may be undefined [-Wsequence-point]
+  if (ADC0->R[0]!= 0) j=j++;
+                       ^
+../src/main.c:165:2: warning: 'return' with a value, in function returning void
+  return j;
+  ^
+../src/main.c: In function 'ADC1_IRQHandler':
+../src/main.c:172:16: warning: suggest parentheses around comparison in operand of '&' [-Wparentheses]
+  if (ADC1->R[0]>1 & ADC0->R[0] < 127) PTC->PDOR=derecha;
+                ^
+../src/main.c:174:26: warning: operation on 'i' may be undefined [-Wsequence-point]
+     if (ADC1->R[0]== 0) i=i++;
+                          ^
+../src/main.c:176:5: warning: 'return' with a value, in function returning void
+     return i;
+     ^
+../src/main.c:177:26: warning: operation on 'j' may be undefined [-Wsequence-point]
+     if (ADC1->R[0]!= 0) j=j++;
+                          ^
+../src/main.c:179:5: warning: 'return' with a value, in function returning void
+     return j;
+     ^
+make: *** [src/subdir.mk:35: src/main.o] Error 1
+
+19:54:31 Build Finished (took 418ms)
+

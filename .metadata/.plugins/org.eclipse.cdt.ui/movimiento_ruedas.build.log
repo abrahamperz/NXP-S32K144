@@ -1,9 +1,18 @@
-22:23:17 **** Incremental Build of configuration Debug for project movimiento_ruedas ****
+12:34:57 **** Incremental Build of configuration Debug for project movimiento_ruedas ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
 Invoking: Standard S32DS C Compiler
 arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c:16:23: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ unsigned char cuentas=500;
+                       ^
+../src/main.c:18:1: warning: excess elements in scalar initializer
+ unsigned long secuencia_canales_adc={(1<<6)+12,(1<<6)+9,(1<<6)+8};
+ ^
+../src/main.c:18:1: warning: (near initialization for 'secuencia_canales_adc')
+../src/main.c:18:1: warning: excess elements in scalar initializer
+../src/main.c:18:1: warning: (near initialization for 'secuencia_canales_adc')
 Finished building: ../src/main.c
  
 Building target: movimiento_ruedas.elf
@@ -16,9 +25,9 @@ Executing target #6 movimiento_ruedas.siz
 Invoking: Standard S32DS Print Size
 arm-none-eabi-size --format=berkeley  movimiento_ruedas.elf 
    text	   data	    bss	    dec	    hex	filename
-   2020	      4	   3080	   5104	   13f0	movimiento_ruedas.elf
+   2096	     20	   3080	   5196	   144c	movimiento_ruedas.elf
 Finished building: movimiento_ruedas.siz
  
 
-22:23:18 Build Finished (took 966ms)
+12:34:58 Build Finished (took 1s.20ms)
 

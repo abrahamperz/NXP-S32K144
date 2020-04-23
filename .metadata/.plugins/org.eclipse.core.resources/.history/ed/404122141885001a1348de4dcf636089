@@ -1,0 +1,110 @@
+/*
+ * main implementation: use this 'C' sample to create your own application
+ *
+ */
+
+
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+#include "math.h"
+#define pi 3.14159
+#define R .008  //Radio de llanta en metros
+#define L .6486 //Distancia entre las ruedas en metros
+#define V 5 //Velocidad deseada en metros/segundos
+#define T 4000 //periodo
+
+unsigned char i;
+unsigned char espejo_pin=0;
+int short duty_right;
+int short duty_left;
+int long Wm1[6]={(0), (pi/4), (-pi/4), (-pi/4) , (pi/4), (0)}; //right
+int long Wm2[6]={(0), (-pi/4), (pi/4), (pi/4) , (-pi/4), (0)}; //left
+
+void LPIT0_Ch0_IRQHandler (void)
+{
+	for (i = 0;i<=5;i++) duty_right=((2*V)+(Wm1[i]*L))/(2*R);
+	LPIT0->MSR=1;					//Borrar bandera
+	LPIT0->TMR[0].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+	if (espejo_pin==1)
+	{
+		espejo_pin=0;
+		LPIT0->TMR[0].TVAL=(((100-(unsigned int)duty_right)*T)/100);
+	}
+	else
+	{
+		espejo_pin=1;
+		LPIT0->TMR[0].TVAL=((((unsigned int)duty_right)*T)/100);
+	}
+	LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
+
+}
+void LPIT0_Ch0_init(void)
+{
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	SCG->SIRCDIV=(1<<8);  //8MHz/1
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[0].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
+	LPIT0->TMR[0].TVAL=T;
+	LPIT0->MIER=1;
+	LPIT0->TMR[0].TCTRL|=1;
+	S32_NVIC->ISER[48/32]=(1<<(48%32));
+}
+void LPIT0_Ch1_IRQHandler (void)
+{
+	LPIT0->MSR=1;					//Borrar bandera
+	LPIT0->TMR[1].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+	if (espejo_pin==1)
+	{
+		espejo_pin=0;
+		LPIT0->TMR[1].TVAL=(((100-(unsigned int)duty_left)*T)/100);
+	}
+	else
+	{
+		espejo_pin=1;
+		LPIT0->TMR[1].TVAL=((((unsigned int)duty_left)*T)/100);
+	}
+	LPIT0->TMR[1].TCTRL|=(1<<0);		//Enable->Trigger
+
+}
+void LPIT0_Ch1_init(void)
+{
+
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	SCG->SIRCDIV=(1<<8);  //8MHz/1
+
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[1].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
+	LPIT0->TMR[0].TVAL=T;
+	LPIT0->MIER=2;
+	LPIT0->TMR[0].TCTRL|=1;
+	S32_NVIC->ISER[49/32]=(1<<(49%32));
+}
+void PORTC_init(void)
+{
+	PCC->PCCn[PCC_PORTC_INDEX]=(1<<30);
+	PORTC->PCR[7]=(1<<8);
+	PORTC->PCR[15]=(1<<8);
+	PORTC->PCR[17]=(1<<8);
+	PORTC->PCR[14]=(1<<8);
+	PTC->PDDR=(1<<7)+(1<<15)+(1<<17)+(1<<14);
+	PTC->PDOR=0;
+}
+
+int main(void)
+{
+	SCG->SIRCDIV=(1<<8);	//SIRCDIV2=8MHz/1=8MHz
+	PORTC_init();
+	LPIT0_Ch0_init();
+	LPIT0_Ch1_init();
+
+	return 0;
+}

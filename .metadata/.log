@@ -8829,3 +8829,95 @@ No symbol "pxReadyTasksLists" in current context.
 java.lang.Exception: No symbol "pxReadyTasksLists" in current context.
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:941)
 	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:770)
+!SESSION 2020-04-16 11:45:05.885 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_MX
+Framework arguments:  -product com.nxp.s32ds.arm.ide.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.nxp.s32ds.arm.ide.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-04-16 11:45:29.821
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\abrah'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.s32ds.cdt.core 4 0 2020-04-16 12:34:43.875
+!MESSAGE Error: Line ../src/main.c:33:1: error: expected ',' or ';' before 'void' wasn't registered in the queue!
+!STACK 0
+java.lang.IllegalArgumentException: Line ../src/main.c:33:1: error: expected ',' or ';' before 'void' wasn't registered in the queue!
+	at com.freescale.s32ds.cdt.core.OutputLineQueue.logError(OutputLineQueue.java:91)
+	at com.freescale.s32ds.cdt.core.OutputLineQueue.setDone(OutputLineQueue.java:57)
+	at com.freescale.s32ds.cdt.core.FSLErrorParserManager.outputLine(FSLErrorParserManager.java:473)
+	at com.freescale.s32ds.cdt.core.FSLErrorParserManager.processErrorParsers(FSLErrorParserManager.java:459)
+	at com.freescale.s32ds.cdt.core.FSLErrorParserManager.processLine(FSLErrorParserManager.java:358)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.processLine(ConsoleOutputSniffer.java:178)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer.access$0(ConsoleOutputSniffer.java:174)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.checkLine(ConsoleOutputSniffer.java:99)
+	at org.eclipse.cdt.internal.core.ConsoleOutputSniffer$ConsoleOutputStream.write(ConsoleOutputSniffer.java:58)
+	at java.io.OutputStream.write(Unknown Source)
+	at org.eclipse.cdt.internal.core.ProcessClosure$ReaderThread.run(ProcessClosure.java:57)
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-16 12:36:35.531
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-16 12:36:35.536
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-16 12:36:43.494
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-16 12:36:43.511
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-16 12:36:43.527
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v8.0.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-16 12:36:46.652
+!MESSAGE AddConfig: Added config Name=Debug_RAM
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-04-16 12:36:53.673
+!MESSAGE Indexed 'examen1' (3 sources, 17 headers) in 0.82 sec: 1,108 declarations; 1,547 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-04-16 12:37:45.062
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2020-04-16 12:37:45.069
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+!SESSION 2020-04-22 09:41:09.987 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_MX
+Framework arguments:  -product com.nxp.s32ds.arm.ide.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.nxp.s32ds.arm.ide.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-04-22 09:41:35.249
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\abrah'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-22 09:43:21.537
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-22 09:43:21.543
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-22 09:43:38.262
+!MESSAGE No toolchain found for toolchainId: ghs.managedmake.arm.executable.toolchain
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-22 09:43:38.272
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v6.1.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-22 09:43:38.282
+!MESSAGE No toolchain found for toolchainId: iar.arm.toolchain.v8.0.0
+
+!ENTRY com.freescale.s32ds.cross.wizard 2 0 2020-04-22 09:43:42.051
+!MESSAGE AddConfig: Added config Name=Debug_RAM
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-04-22 09:43:50.586
+!MESSAGE Indexed 'Obstacle_detection' (3 sources, 15 headers) in 1.29 sec: 1,101 declarations; 1,482 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0%)
