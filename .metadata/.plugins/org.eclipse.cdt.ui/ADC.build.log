@@ -1,8 +1,12 @@
-22:44:49 **** Incremental Build of configuration Debug for project ADC ****
+11:26:29 **** Incremental Build of configuration Debug for project ADC ****
 make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Command canceled
+Executing target #6 ADC.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1648	      0	   3072	   4720	   1270	ADC.elf
+Finished building: ADC.siz
+ 
 
-22:44:50 Build Cancelled (took 1s.351ms)
+11:26:30 Build Finished (took 337ms)
 

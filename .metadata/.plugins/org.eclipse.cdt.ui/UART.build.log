@@ -1,0 +1,24 @@
+18:01:16 **** Incremental Build of configuration Debug for project UART ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: UART.elf
+Executing target #5 UART.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "UART.elf" "@UART.args"   
+Finished building target: UART.elf
+ 
+Executing target #6 UART.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  UART.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1576	      8	   3072	   4656	   1230	UART.elf
+Finished building: UART.siz
+ 
+
+18:01:17 Build Finished (took 1s.143ms)
+

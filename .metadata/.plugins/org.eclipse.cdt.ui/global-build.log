@@ -1,9 +1,81 @@
-23:17:12 **** Incremental Build of configuration Debug for project Obstacle_detection ****
+17:59:30 **** Incremental Build of configuration Debug for project Uart_TX_Polling_ISR ****
 make -j4 all 
-Executing target #6 Obstacle_detection.siz
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Uart_TX_Polling_ISR.elf
+Executing target #5 Uart_TX_Polling_ISR.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Uart_TX_Polling_ISR.elf" "@Uart_TX_Polling_ISR.args"   
+Finished building target: Uart_TX_Polling_ISR.elf
+ 
+Executing target #6 Uart_TX_Polling_ISR.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  Obstacle_detection.elf 
+arm-none-eabi-size --format=berkeley  Uart_TX_Polling_ISR.elf 
    text	   data	    bss	    dec	    hex	filename
-   4404	      0	   3112	   7516	   1d5c	Obstacle_detection.elf
-Finished building: Obstacle_detection.siz
+   1576	     20	   3072	   4668	   123c	Uart_TX_Polling_ISR.elf
+Finished building: Uart_TX_Polling_ISR.siz
+ 
+17:59:34 **** Incremental Build of configuration Debug for project Uart_TX_Polling_ISR ****
+make -j4 all 
+Executing target #6 Uart_TX_Polling_ISR.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Uart_TX_Polling_ISR.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1576	     20	   3072	   4668	   123c	Uart_TX_Polling_ISR.elf
+Finished building: Uart_TX_Polling_ISR.siz
+ 
+17:59:38 **** Incremental Build of configuration Debug for project Uart_TX_Polling_ISR ****
+make -j4 all 
+Executing target #6 Uart_TX_Polling_ISR.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Uart_TX_Polling_ISR.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1576	     20	   3072	   4668	   123c	Uart_TX_Polling_ISR.elf
+Finished building: Uart_TX_Polling_ISR.siz
+ 
+18:00:45 **** Incremental Build of configuration Debug for project UART ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: UART.elf
+Executing target #5 UART.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "UART.elf" "@UART.args"   
+Finished building target: UART.elf
+ 
+Executing target #6 UART.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  UART.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1576	      8	   3072	   4656	   1230	UART.elf
+Finished building: UART.siz
+ 
+18:01:16 **** Incremental Build of configuration Debug for project UART ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: UART.elf
+Executing target #5 UART.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "UART.elf" "@UART.args"   
+Finished building target: UART.elf
+ 
+Executing target #6 UART.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  UART.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1576	      8	   3072	   4656	   1230	UART.elf
+Finished building: UART.siz
  

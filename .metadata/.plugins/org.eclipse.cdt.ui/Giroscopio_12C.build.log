@@ -1,0 +1,12 @@
+12:33:12 **** Incremental Build of configuration Debug for project Giroscopio_12C ****
+make -j4 all 
+Executing target #6 Giroscopio_12C.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Giroscopio_12C.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12360	      8	   3200	  15568	   3cd0	Giroscopio_12C.elf
+Finished building: Giroscopio_12C.siz
+ 
+
+12:33:13 Build Finished (took 311ms)
+

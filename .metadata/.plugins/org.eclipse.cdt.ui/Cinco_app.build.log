@@ -1,0 +1,19 @@
+09:31:50 **** Incremental Build of configuration Debug for project Cinco_app ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Cinco_app.elf
+Executing target #5 Cinco_app.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Cinco_app.elf" "@Cinco_app.args"   
+./Project_Settings/Startup_Code/startup_S32K144.o: In function `Reset_Handler':
+D:\Documentos\SemestresTec\Semestre_i\Microcontroladores\NXP-S32K144\Cinco_app\Debug/../Project_Settings/Startup_Code/startup_S32K144.S:344: undefined reference to `main'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:58: Cinco_app.elf] Error 1
+
+09:31:51 Build Finished (took 769ms)
+

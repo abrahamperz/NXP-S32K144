@@ -1,0 +1,13 @@
+09:27:32 **** Incremental Build of configuration Debug for project CincoJ_UART ****
+make -j4 all 
+Building target: CincoJ_UART.elf
+Executing target #5 CincoJ_UART.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "CincoJ_UART.elf" "@CincoJ_UART.args"   
+./Project_Settings/Startup_Code/startup_S32K144.o: In function `Reset_Handler':
+D:\Documentos\SemestresTec\Semestre_i\Microcontroladores\NXP-S32K144\CincoJ_UART\Debug/../Project_Settings/Startup_Code/startup_S32K144.S:344: undefined reference to `main'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:58: CincoJ_UART.elf] Error 1
+
+09:27:32 Build Finished (took 493ms)
+

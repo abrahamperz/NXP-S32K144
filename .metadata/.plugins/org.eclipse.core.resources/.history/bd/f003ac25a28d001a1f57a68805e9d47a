@@ -1,0 +1,68 @@
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+
+
+
+int x2 = 5;
+int y = 10;
+int z = 15;
+int vel = 20;
+
+
+unsigned char mensaje1[]={"Hola mundo!!!\n\r"};
+
+
+int mensaje[]={196,197,198,199,0};
+//int mensaje[]={197,0};
+int mensaje2[];
+
+unsigned char i =0;
+
+void delay (void)
+{
+	unsigned long j=50000;
+	do{}while (j--);
+	i = 0;
+}
+
+void LPUART1_RxTx_IRQHandler(void){
+
+
+
+    	LPUART1->DATA=mensaje[i++];
+    	if(i==6) LPUART1->CTRL|=~(1<<23);
+    		//if(mensaje[i]==0) delay();
+
+    	//if (mensaje[i]==0) LPUART1->CTRL|=~(1<<23);
+
+
+
+}
+
+	//if(mensaje[i] == mensaje[5]) 	LPUART1->CTRL|=(1<<23);
+	//if(mensaje[i] == 0) LPUART1->CTRL|=~(1<<23);
+
+
+
+
+
+
+int main(void)
+{
+	//mensaje2[]={x,y,z,vel,0};
+	PCC->PCCn[PCC_PORTC_INDEX]=1<<30;
+	PORTC->PCR[7]=2<<8;						//LPUART1 TX
+	PORTC->PCR[6]=2<<8;						//LPUART1 RX
+
+	SCG->SIRCDIV=1<<8;						//SIRCDIV2: 8 MHz/1
+
+    PCC->PCCn[PCC_LPUART1_INDEX]=2<<24;		//SIRCDIV2
+	PCC->PCCn[PCC_LPUART1_INDEX]|=1<<30;
+	LPUART1->BAUD|=52;						//BAUD_SRG=CLK_UART/(16*9600)
+	LPUART1->CTRL|=(1<<19)+(1<<18)+(1<<23);			//TE=RE=1
+
+    S32_NVIC->ISER[33/32]=(1<<(33%32));
+
+
+	while (1);
+	return 0;
+}

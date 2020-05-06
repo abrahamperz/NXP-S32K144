@@ -1,0 +1,13 @@
+"./src/main.o"
+"./Project_Settings/Startup_Code/system_S32K144.o"
+"./Project_Settings/Startup_Code/startup_S32K144.o"
+"./Project_Settings/Startup_Code/startup.o"
+-T
+"D:/Documentos/SemestresTec/Semestre_i/Microcontroladores/NXP-S32K144/Giroscopio_12C/Project_Settings/Linker_Files/S32K1xx_flash.ld"
+-Wl,-Map,"Giroscopio_12C.map"
+-Xlinker
+--gc-sections
+-mcpu=cortex-m4
+-mthumb
+-specs=ewl_c9x_noio.specs
+--sysroot="D:/NXP/S32DS_ARM_v2018.R1/S32DS/arm_ewl2"

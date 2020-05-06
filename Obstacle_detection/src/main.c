@@ -2,43 +2,47 @@
  * main implementation: use this 'C' sample to create your own application
  *
  */
-
-
 #include "S32K144.h" /* include peripheral declarations S32K144 */
 #include "math.h"
 #define pi 3.14159
 #define R .008  //Radio de llanta en metros
 #define L .6486 //Distancia entre las ruedas en metros
 #define V 5 //Velocidad deseada en metros/segundos
-#define T 4000 //periodo
-#define right pi/4
-#define left -pi/4
+#define T 100 //periodo
+#define left pi/2.5
+#define right -pi/2.5
+#define k 2260 //constante sensor, distancia en 50cm
 
 unsigned char i;
 unsigned char espejo_pin=0;
-int short duty_right;
-int short duty_left;
-int long Wm1[6]={(0), (right), (left), (left) , (right), (0)}; //right
-int long Wm2[6]={(0), (left), (right), (right) , (left), (0)}; //left
+unsigned char sensor1=0;
+unsigned char sensor2=0;
+int duty_right;
+int duty_left;
+int Wm[6]={(0), (left), (right), (right) , (left), (0)};
 
 void LPIT0_Ch0_IRQHandler (void)
 {
 	PTC->PDOR=(1<<14)+(1<<7);
-	for (i = 0;i<=5;i++) duty_right=((2*V)+(Wm1[i]*L))/(2*R);
-	LPIT0->MSR=1;					//Borrar bandera
-	LPIT0->TMR[0].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
-	if (espejo_pin==1)
+	for (i = 0;i<=5;i++)
 	{
-		espejo_pin=0;
-		LPIT0->TMR[0].TVAL=(((100-(unsigned int)duty_right)*T)/100);
-	}
-	else
-	{
-		espejo_pin=1;
-		LPIT0->TMR[0].TVAL=((((unsigned int)duty_right)*T)/100);
-	}
-	LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
 
+		LPIT0->MSR=1;					//Borrar bandera
+		LPIT0->TMR[0].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+		duty_right=((2*V)+(Wm[i]*L))/(2*R);
+		if (espejo_pin==1)
+		{
+			espejo_pin=0;
+			LPIT0->TMR[0].TVAL=(((100-duty_right)*T)/100); //PWM
+		}
+		else
+		{
+			espejo_pin=1;
+			LPIT0->TMR[0].TVAL=(((duty_right)*T)/100); //PWM
+		}
+		LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
+		delay(5000);
+	}
 }
 void LPIT0_Ch0_init(void)
 {
@@ -59,21 +63,24 @@ void LPIT0_Ch0_init(void)
 void LPIT0_Ch1_IRQHandler (void)
 {
 	PTC->PDOR=(1<<14)+(1<<7);
-	for (i = 0;i<=5;i++) duty_left=((2*V)-(Wm1[i]*L))/(2*R);
-	LPIT0->MSR=1;					//Borrar bandera
-	LPIT0->TMR[1].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
-	if (espejo_pin==1)
+	for (i = 0;i<=5;i++)
 	{
-		espejo_pin=0;
-		LPIT0->TMR[1].TVAL=(((100-(unsigned int)duty_left)*T)/100);
+		duty_left=((2*V)-(Wm[i]*L))/(2*R);
+		LPIT0->MSR=1;					//Borrar bandera
+		LPIT0->TMR[0].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+		if (espejo_pin==1)
+		{
+			espejo_pin=0;
+			LPIT0->TMR[0].TVAL=(((100-duty_left)*T)/100);
+		}
+		else
+		{
+			espejo_pin=1;
+			LPIT0->TMR[0].TVAL=(((duty_left)*T)/100);
+		}
+		LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
+		delay(5000);
 	}
-	else
-	{
-		espejo_pin=1;
-		LPIT0->TMR[1].TVAL=((((unsigned int)duty_left)*T)/100);
-	}
-	LPIT0->TMR[1].TCTRL|=(1<<0);		//Enable->Trigger
-
 }
 void LPIT0_Ch1_init(void)
 {
@@ -104,6 +111,21 @@ void PORTC_init(void)
 	PTC->PDOR=0;
 
 }
+void delay (unsigned long i)
+{
+
+do{}while (--i);
+}
+
+void sensores(void){
+	if(sensor1 <=50 || sensor2 <=50)
+	{
+
+
+	}
+	delay(1000000);
+}
+
 
 int main(void)
 {
@@ -111,6 +133,9 @@ int main(void)
 	PORTC_init();
 	LPIT0_Ch0_init();
 	LPIT0_Ch1_init();
+
+	for(;;) {
+	        }
 
 	return 0;
 }

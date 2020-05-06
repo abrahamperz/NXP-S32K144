@@ -1,0 +1,12 @@
+18:19:15 **** Incremental Build of configuration Debug for project prove_uart ****
+make -j4 all 
+Executing target #6 prove_uart.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  prove_uart.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1584	     20	   3072	   4676	   1244	prove_uart.elf
+Finished building: prove_uart.siz
+ 
+
+18:19:15 Build Finished (took 450ms)
+

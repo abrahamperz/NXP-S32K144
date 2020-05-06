@@ -1,0 +1,64 @@
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+
+unsigned long mensaje1[]={'5','10','15',"20\n\r",};  // 'H'<> "H"
+unsigned char i=0;
+unsigned char digito;
+unsigned char monitoreo[4];
+
+void LPUART0_RxTx_IRQHandler (void) //CHECHAR QUE BANDERA NOS TRAJO A LA INTERRUPCION! (SOLO SI ESTAS USANDO EL RECEIVER Y EL TRANSMITER)
+{
+	unsigned char dato_temp;	//Asignamos un dato temporal
+	if (LPUART0->CTRL & (1<<23)){		//Checamos que la interrupcion del transmiter este habilitidad
+		if((LPUART0->STAT) & (1<<23)){	//Checamos la bandera del transmiter
+			if(digito < 4){					//Con esta condicion mandamos las variables que vayammos a usar en blueetoth
+				LPUART0->DATA = monitoreo[digito++] + 0x30;	//Se manda la variable numerica digito por digito
+			} else {					//Y despues de la variable mandamos una coma que indica que cambiamos de variable
+					LPUART0->DATA = ','; //Se manda la coma
+					digito = 0;				//reiniciamos t2 a 0
+					LPUART0->CTRL&=~(1<<19)+(1<<23);	//Apagamos el transmiter
+			}
+		}
+	} else {				//Si el transmiter esta apagado, solo puede entrar al receiver
+		if((LPUART0->STAT)&(1<<21)){ //Checamos la bandera del receiver
+		dato_temp = LPUART0->DATA; //El dato temporal pasa a valer el dato recibido por la UART0
+			if (dato_temp == 'E'){	//Si el dato no vale E, se guarda en instruccion i2 y luego se le suma 1 a i2
+				//reset();
+			}
+		}
+	}
+}
+
+
+int main(void)
+{
+	PCC->PCCn[PCC_PORTB_INDEX] = (1<<30);	//Reloj del PUERTOB
+		PORTB->PCR[0]=(2<<8);				//PUERTOB PIN 0 como UART Rx
+		PORTB->PCR[1]=(2<<8);				//PUERTOB PIN 1 como UART Tx
+
+		PCC->PCCn[PCC_LPUART0_INDEX] = (1<<30) + (3<<24); //FIRCDIV2
+		LPUART0->BAUD = 312;			//Baud rate de 312 para frecuencia de 9600Hz
+		LPUART0->CTRL = (3<<18);		//Habilitar receptor y transmisor
+
+		S32_NVIC->ISER[31/32]|=(1<<(31%32));
+/*
+	for (i='A';i<='Z';i++)    //for (i=65; i<=91; i++)
+	{
+	do{}while ((LPUART1->STAT & (1<<23))==0);
+	LPUART1->DATA=i;
+	}
+*/
+	// i=0;
+	// do
+	// {
+	// do{}while ((LPUART1->STAT & (1<<23))==0);
+	// LPUART1->DATA=mensaje1[i++];
+	// }while (mensaje1[i]!=0);
+
+
+
+
+
+
+	while (1);
+	return 0;
+}

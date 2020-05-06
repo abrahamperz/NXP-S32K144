@@ -1,0 +1,12 @@
+17:59:38 **** Incremental Build of configuration Debug for project Uart_TX_Polling_ISR ****
+make -j4 all 
+Executing target #6 Uart_TX_Polling_ISR.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Uart_TX_Polling_ISR.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1576	     20	   3072	   4668	   123c	Uart_TX_Polling_ISR.elf
+Finished building: Uart_TX_Polling_ISR.siz
+ 
+
+17:59:39 Build Finished (took 259ms)
+

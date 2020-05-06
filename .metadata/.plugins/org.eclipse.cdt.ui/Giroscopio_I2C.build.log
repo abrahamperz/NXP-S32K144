@@ -1,0 +1,34 @@
+19:50:44 **** Incremental Build of configuration Debug for project Giroscopio_I2C ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'LPIT0_Ch2_IRQHandler':
+../src/main.c:331:25: error: expected expression before ']' token
+                entera_x[];= roll_x;
+                         ^
+../src/main.c:331:27: error: expected expression before '=' token
+                entera_x[];= roll_x;
+                           ^
+../src/main.c: In function 'LPUART1_RxTx_IRQHandler':
+../src/main.c:361:25: error: expected expression before ']' token
+  LPUART1->DATA=entera_x[];
+                         ^
+../src/main.c:362:17: error: expected expression before ']' token
+     if(entera_y[]==0){
+                 ^
+../src/main.c: At top level:
+../src/main.c:38:5: warning: array 'entera_x' assumed to have one element
+ int entera_x[];
+     ^
+../src/main.c:45:15: warning: array 'entera_y' assumed to have one element
+ unsigned char entera_y[];
+               ^
+../src/main.c:49:15: warning: array 'entera_z' assumed to have one element
+ unsigned char entera_z[];
+               ^
+make: *** [src/subdir.mk:35: src/main.o] Error 1
+
+19:50:44 Build Finished (took 413ms)
+
