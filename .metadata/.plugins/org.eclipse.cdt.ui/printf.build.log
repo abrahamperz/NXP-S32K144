@@ -1,0 +1,12 @@
+10:52:05 **** Incremental Build of configuration Debug for project printf ****
+make -j4 all 
+Executing target #6 printf.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  printf.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11536	    228	   3272	  15036	   3abc	printf.elf
+Finished building: printf.siz
+ 
+
+10:52:05 Build Finished (took 258ms)
+

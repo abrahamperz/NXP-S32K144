@@ -6,7 +6,10 @@ int x = 5;
 int y = 10;
 int z = 15;
 int vel = 20;
-//int* array[]={&x,&y,&z};
+
+int* array[]={&x,&y,&z};
+
+//int array2[]={x,y,z};
 
 int mensaje[]={4,8,16,20,0};
 //unsigned char mensaje[]={"Hola mundo"};
@@ -22,9 +25,9 @@ void LPUART1_RxTx_IRQHandler(void){
     	//if(mensaje[6]) LPUART1->CTRL|=~(1<<23);
 
 
-	//  if(mensaje[i]==0){
-	  //      LPUART1->CTRL&=~(1<<23);
-	    //    i=0; }
+	  if(mensaje[i]==0){
+	       LPUART1->CTRL&=~(1<<23);
+	       i=0; }
 }
 
 

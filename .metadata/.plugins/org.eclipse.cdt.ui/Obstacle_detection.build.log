@@ -1,4 +1,4 @@
-20:29:07 **** Incremental Build of configuration Debug for project Obstacle_detection ****
+08:56:31 **** Incremental Build of configuration Debug for project Obstacle_detection ****
 make -j4 all 
 Building file: ../src/main.c
 Executing target #4 ../src/main.c
@@ -16,9 +16,9 @@ Executing target #6 Obstacle_detection.siz
 Invoking: Standard S32DS Print Size
 arm-none-eabi-size --format=berkeley  Obstacle_detection.elf 
    text	   data	    bss	    dec	    hex	filename
-   4380	      0	   3112	   7492	   1d44	Obstacle_detection.elf
+   4436	     24	   3088	   7548	   1d7c	Obstacle_detection.elf
 Finished building: Obstacle_detection.siz
  
 
-20:29:08 Build Finished (took 1s.393ms)
+08:56:32 Build Finished (took 1s.67ms)
 

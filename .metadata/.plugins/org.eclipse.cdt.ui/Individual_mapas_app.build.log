@@ -1,0 +1,24 @@
+12:29:37 **** Incremental Build of configuration Debug for project Individual_mapas_app ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Individual_mapas_app.elf
+Executing target #5 Individual_mapas_app.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Individual_mapas_app.elf" "@Individual_mapas_app.args"   
+Finished building target: Individual_mapas_app.elf
+ 
+Executing target #6 Individual_mapas_app.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Individual_mapas_app.elf 
+   text	   data	    bss	    dec	    hex	filename
+   2920	      4	   3080	   6004	   1774	Individual_mapas_app.elf
+Finished building: Individual_mapas_app.siz
+ 
+
+12:29:39 Build Finished (took 1s.277ms)
+

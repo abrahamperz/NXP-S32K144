@@ -1,11 +1,11 @@
 #include "S32K144.h" /* include peripheral declarations S32K144 */
 
-unsigned char mensaje1[]={11,12,13,14,15,16,17};  // 'H'<> "H"
+unsigned char mensaje1[]={11,12,13,14,15,16,17,0};  // 'H'<> "H"
 unsigned char i=0;
 
 void LPUART1_RxTx_IRQHandler(void){
 	LPUART1->DATA=mensaje1[0];
-    //if(mensaje1[i]==0) LPUART1->CTRL&=~(1<<23);
+    if(mensaje1[i]==0) LPUART1->CTRL&=~(1<<23);
 
 
 }
@@ -24,19 +24,7 @@ int main(void)
 	LPUART1->CTRL|=(1<<19)+(1<<18)+(1<<23);			//TE=RE=1
 
     S32_NVIC->ISER[33/32]=(1<<(33%32));
-/*
-	for (i='A';i<='Z';i++)    //for (i=65; i<=91; i++)
-	{
-	do{}while ((LPUART1->STAT & (1<<23))==0);
-	LPUART1->DATA=i;
-	}
-*/
-	// i=0;
-	// do
-	// {
-	// do{}while ((LPUART1->STAT & (1<<23))==0);
-	// LPUART1->DATA=mensaje1[i++];
-	// }while (mensaje1[i]!=0);
+
 
 	while (1);
 	return 0;

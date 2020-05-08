@@ -23,6 +23,7 @@ int Wm[6]={(0), (left), (right), (right) , (left), (0)};
 
 void LPIT0_Ch0_IRQHandler (void)
 {
+	unsigned short delay;
 	PTC->PDOR=(1<<14)+(1<<7);
 	for (i = 0;i<=5;i++)
 	{
@@ -41,7 +42,7 @@ void LPIT0_Ch0_IRQHandler (void)
 			LPIT0->TMR[0].TVAL=(((duty_right)*T)/100); //PWM
 		}
 		LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
-		delay(5000);
+		for (delay=0; delay<= 5000;delay++);
 	}
 }
 void LPIT0_Ch0_init(void)
@@ -62,6 +63,7 @@ void LPIT0_Ch0_init(void)
 }
 void LPIT0_Ch1_IRQHandler (void)
 {
+	unsigned short delay;
 	PTC->PDOR=(1<<14)+(1<<7);
 	for (i = 0;i<=5;i++)
 	{
@@ -79,7 +81,7 @@ void LPIT0_Ch1_IRQHandler (void)
 			LPIT0->TMR[0].TVAL=(((duty_left)*T)/100);
 		}
 		LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
-		delay(5000);
+		for (delay=0; delay<= 5000;delay++);
 	}
 }
 void LPIT0_Ch1_init(void)
@@ -111,20 +113,9 @@ void PORTC_init(void)
 	PTC->PDOR=0;
 
 }
-void delay (unsigned long i)
-{
-
-do{}while (--i);
-}
-
-void sensores(void){
-	if(sensor1 <=50 || sensor2 <=50)
-	{
 
 
-	}
-	delay(1000000);
-}
+
 
 
 int main(void)

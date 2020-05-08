@@ -1,12 +1,24 @@
-12:33:12 **** Incremental Build of configuration Debug for project Giroscopio_12C ****
+16:54:38 **** Incremental Build of configuration Debug for project Giroscopio_12C ****
 make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Giroscopio_12C.elf
+Executing target #5 Giroscopio_12C.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Giroscopio_12C.elf" "@Giroscopio_12C.args"   
+Finished building target: Giroscopio_12C.elf
+ 
 Executing target #6 Giroscopio_12C.siz
 Invoking: Standard S32DS Print Size
 arm-none-eabi-size --format=berkeley  Giroscopio_12C.elf 
    text	   data	    bss	    dec	    hex	filename
-  12360	      8	   3200	  15568	   3cd0	Giroscopio_12C.elf
+   1492	      0	   3080	   4572	   11dc	Giroscopio_12C.elf
 Finished building: Giroscopio_12C.siz
  
 
-12:33:13 Build Finished (took 311ms)
+16:54:44 Build Finished (took 6s.277ms)
 

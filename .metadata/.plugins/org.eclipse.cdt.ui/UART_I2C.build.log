@@ -1,0 +1,12 @@
+23:58:50 **** Incremental Build of configuration Debug for project UART_I2C ****
+make -j4 all 
+Executing target #6 UART_I2C.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  UART_I2C.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12408	     28	   3176	  15612	   3cfc	UART_I2C.elf
+Finished building: UART_I2C.siz
+ 
+
+23:58:51 Build Finished (took 259ms)
+

@@ -1,88 +1,17 @@
+/*
+ * I2C0.c
+ *
+ *  Created on: 16/10/2019
+ *      Author: Jesus
+ */
 
 #include "S32K144.h" /* include peripheral declarations S32K144 */
-#include <math.h>
-// * Detailed Description:
- //* This is a rather simple non-SDK example that shows LPI2C0 in Master mode.
- //* MPL3115A2 temperature/altitude sensor is used as a slave device.
- //* I2C bus at PTA2 SDA, PTA3 SCL (open drain),
- //* external pull-up resistors on BRKTSTBC-P3115 board.
-// * BRKTSTBC-P3115 supplied from P3V3 (J3.7)
- //* Baud rate 400kHz, source SIRCDIV2 8MHz.
- //* The master reads periodically MPL3115A2 status register
- //* and temperature and altitude data from the slave once they are ready.
- //* ------------------------------------------------------------------------------
- //* Test HW:         S32K144EVB-Q100, BRKTSTBC-P3115
- //* MCU:             S32K144 0N57U
- //* Debugger:        S32DSR1
- //* Target:          internal_FLASH
- //********************************************************************************
-//Revision History:
-//3.0     Nov-12-2018     Daniel Martynek
-// *******************************************************************************/
-/*******************************************************************************
- * Includes
- *******************************************************************************/
 
 
 unsigned char error = 0;
-
-int8_t aceleracionx[2];
-int16_t aceleracion_x;
-
-int8_t aceleraciony[2];
-int16_t aceleracion_y;
-
-int8_t aceleracionz[2];
-int16_t aceleracion_z;
-
-int8_t gyrox[2];
-int16_t gyro_x;
-unsigned char entera_x[];
-
-int8_t gyroy[2];
-int16_t gyro_y;
-unsigned char entera_y[];
-
-int8_t gyroz[2];
-int16_t gyro_z;
-unsigned char entera_z[];
-
-double pitch_y_acc;
-double roll_x_acc;
-unsigned long bandera=0;
-unsigned long tiempo_prev;
-float dt;
-double pitch_y;
-double roll_x;
-double yaw_z;
-unsigned char i=0;
-/*******************************************************************************
-Function Name : SIRC_div_8MHz
-Notes         : SIRCDIV2 divide by 1 (8MHz)
-                SIRCDIV1 divide by 1 (8MHz)
- *******************************************************************************/
-void SIRC_div(void)
-{
-
-    // Slow IRC Control Status Register
-    SCG->SIRCCSR &= ~ (1 << 24);
-    // [24] LK = 0 Control Status Register can be written.
-
-    SCG->SIRCCSR &= ~ (1 << 0);
-    // [0] SIRCEN = 0 Disable Slow IRC
-
-    // Slow IRC Divide Register
-    SCG->SIRCDIV |= 0x0101;
-    // [10-8] SIRCDIV2 0b001 Divide by 1 (8MHz)
-    // [2-0]  SIRCDIV1 0b001 Divide by 1 (8MHz)
-
-    SCG->SIRCCSR |= (1 << 0);
-    // [0] SIRCEN = 1 Enable Slow IRC
-
-    while((SCG->SIRCCSR & (1 << 24)) == 0); // wait until clock is valid
-    // [24] SIRCVLD = 1 Slow IRC is enabled and output clock is valid
-}
-
+double pos_y;
+double pos_x;
+double pos_z;
 
 /*******************************************************************************
 Function Name : LPI2C0_init
@@ -95,18 +24,18 @@ void LPI2C0_init(void)
 {
     // Peripheral Clock Controller
     PCC-> PCCn[PCC_PORTA_INDEX] = 1<<30;
-    // PTA2 ALT3 LPI2C0_SDA VERDE
+    // PTA2 ALT3 LPI2C0_SDA
     PORTA->PCR[2] |= 3<<8;
-    // PTA3 ALT3 LPI2C0_SCL AZUL
+    // PTA3 ALT3 LPI2C0_SCL
     PORTA->PCR[3] |= 3<<8;
 
     PCC->PCCn[PCC_LPI2C0_INDEX] |= 2<<24;   // SIRCDIV2_CLK (8 MHz)
     PCC->PCCn[PCC_LPI2C0_INDEX] |= 1<<30;
 
-    LPI2C0->MCCR0 = 0x0204050B;
+    LPI2C0->MCCR0 = 0x022E2E0B;
     // [24] DATAVD  0x02
-    // [16] SETHOLD 0x04
-    // [8]  CLKHI   0x05
+    // [16] SETHOLD 0x2E
+    // [8]  CLKHI   0x2E
     // [0]  CLKLO   0x0B
 
     // Master Interrupt Enable Register (MIER)
@@ -120,9 +49,8 @@ void LPI2C0_init(void)
     // [0] MEN = 1   (Master logic is enabled)
 
     // LPI2C_Master_IRQHandler
-    S32_NVIC->ICPR[0] = (1 << (24 % 32));
-    S32_NVIC->ISER[0] = (1 << (24 % 32));
-    S32_NVIC->IP[24]  = 0x00;                 // Priority level 0
+    S32_NVIC->ISER[0] |= (1 << (24 % 32));
+
 }
 
 /*******************************************************************************
@@ -207,7 +135,7 @@ Modifies      : uint8_t *p_buffer
 Returns       : uint8_t
 Notes         : Receive (DATA[7:0] + 1) bytes
  *******************************************************************************/
-static void receive_data(int8_t *p_buffer, uint8_t n_bytes)
+static void receive_data(uint8_t *p_buffer, uint8_t n_bytes)
 {
     uint8_t  n;
     uint16_t time;
@@ -233,6 +161,33 @@ static void receive_data(int8_t *p_buffer, uint8_t n_bytes)
     }
 }
 
+static void receive_data2(int8_t *p_buffer, uint8_t n_bytes)
+{
+    uint8_t  n;
+    uint16_t time;
+    uint16_t timeout_r = (2000 * n_bytes);
+    uint16_t command;
+
+    command =    0x0100;
+    command |=  (n_bytes - 1);
+    LPI2C0->MTDR = command;
+
+    while (((LPI2C0->MFSR) >> 16 != n_bytes) && (time < timeout_r)) ++time;
+
+    if(time >= timeout_r)
+    {
+        LPI2C0->MCR |= (1 << 9);     // reset receive FIFO
+        error |= (1 << 2);
+    }
+    else{
+        for(n = 0; n < n_bytes; ++n)
+        {
+            p_buffer[n] = (uint8_t)(LPI2C0->MRDR & 0x000000FF);
+        }
+    }
+}
+
+
 /*******************************************************************************
 Function Name : I2C_write_reg
 Parameters    : uint8_t s_w_address, uint8_t s_reg_address, uint8_t byte
@@ -249,6 +204,16 @@ uint8_t LPI2C0_write(uint8_t s_w_address, uint8_t s_reg_address, uint8_t byte)
     else return 0;
 }
 
+uint8_t LPI2C0_write2(uint8_t s_w_address, uint8_t s_reg_address, uint8_t byte)
+{
+    if(bus_busy()) return (error |= (1 << 1));
+    generate_start_ACK(s_w_address);
+    transmit_data(s_reg_address);
+    transmit_data(byte);
+    if(generate_stop()) return error;
+    else return 0;
+}
+
 /*******************************************************************************
 Function Name : I2C_read
 Parameters    : uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes
@@ -256,13 +221,24 @@ Modifies      : uint8_t *p_buffer
 Returns       : uint8_t
 Notes         : Read from a slave
  *******************************************************************************/
-int8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, int8_t *p_buffer, uint8_t n_bytes)
+uint8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes)
 {
     if(bus_busy()) return (error |= (1 << 1));
     generate_start_ACK(s_r_address - 1);
     transmit_data(s_reg_address);
     generate_start_ACK(s_r_address);
     receive_data(p_buffer, n_bytes);
+    if(generate_stop()) return error;
+    else return 0;
+}
+
+int8_t LPI2C0_read2(uint8_t s_r_address, uint8_t s_reg_address, int8_t *p_buffer, uint8_t n_bytes)
+{
+    if(bus_busy()) return (error |= (1 << 1));
+    generate_start_ACK(s_r_address - 1);
+    transmit_data(s_reg_address);
+    generate_start_ACK(s_r_address);
+    receive_data2(p_buffer, n_bytes);
     if(generate_stop()) return error;
     else return 0;
 }
@@ -281,108 +257,43 @@ void LPI2C0_Master_IRQHandler(void)
         // condition until this flag has been cleared.
         LPI2C0->MSR = 0x400;     // clear NDF
     }
+}
 
 
+void UART_init(void){
+
+	PCC->PCCn[PCC_PORTB_INDEX] = (1<<30);	//Reloj del PUERTOB
+	PORTB->PCR[0]=(2<<8);				//PUERTOB PIN 0 como UART Rx
+	PORTB->PCR[1]=(2<<8);				//PUERTOB PIN 1 como UART Tx
+
+	PCC->PCCn[PCC_LPUART0_INDEX] = (1<<30) + (3<<24); //FIRCDIV2
+	LPUART0->BAUD = 312;			//Baud rate de 312 para frecuencia de 9600Hz
+	//LPUART0->CTRL = (3<<18);		//Habilitar receptor y transmisor
+
+	S32_NVIC->ISER[31/32]|=(1<<(31%32));
 
 }
 
-//************************************************************
-void LPIT0_Ch2_IRQHandler(void)
+void LPUART0_RxTx_IRQHandler (void) //CHECHAR QUE BANDERA NOS TRAJO A LA INTERRUPCION! (SOLO SI ESTAS USANDO EL RECEIVER Y EL TRANSMITER)
 {
-  LPIT0->MSR|=1;
-  PTD->PTOR=1;
-  bandera++;
-             LPI2C0_write((0x68<<1),0x6B,0x00);
-             LPI2C0_write((0x68<<1),0x1B,0x00);
-      	     LPI2C0_write((0x68<<1),0x1C,0x00);
-      	     LPI2C0_read((0x68<<1)+1,0x3B,aceleracionx,2);
-      	     aceleracion_x =(aceleracionx[0]<<8)+aceleracionx[0];
-
-
-      	     LPI2C0_read((0x68<<1)+1,0x3D,aceleraciony,2);
-      	     aceleracion_y =(aceleraciony[0]<<8)+aceleraciony[0];
-
-
-      	     LPI2C0_read((0x68<<1)+1,0x3F,aceleracionz,2);
-      	     aceleracion_z =(aceleracionz[0]<<8)+aceleracionz[0];
-
-      	     LPI2C0_read((0x68<<1)+1,0x43,gyrox,2);
-      	     gyro_x =(gyrox[0]<<8)+gyrox[0];
-
-      	     LPI2C0_read((0x68<<1)+1,0x45,gyroy,2);
-      	     gyro_y =(gyroy[0]<<8)+gyroy[0];
-
-      	     LPI2C0_read((0x68<<1)+1,0x47,gyroz,2);
-      	     gyro_z =(gyroz[0]<<8)+gyroz[0];
-             //Metodo de las aceleraciones por las tangentes
-             pitch_y_acc=atan(-1*(((float)aceleracion_x)/16384)/sqrt(pow(((float)aceleracion_y/16384),2)+pow(((float)aceleracion_z/16384),2)))*(57.295779); // 2/32768=1/16384 en terminos de g, 180/pirad=57.295779
-             roll_x_acc=atan(((float)aceleracion_y/16384)/sqrt(pow(((float)aceleracion_x/16384),2)+pow(((float)aceleracion_z/16384),2)))*(57.295779); //se van a la app
-
-             //Metodo del giroscopio
-             dt=((float)bandera*(0.03125)-tiempo_prev);
-             tiempo_prev=((float)bandera*(0.03125));
-
-             //Aplicar el filtro complementario pasa bajas para el acelerometro y pasa altas para el giroscopio
-              roll_x=0.98*(roll_x+(float)((gyro_x)/131)*dt)+0.02*(roll_x_acc); //250/32768=1/131
-            // pitch_y=0.98*(pitch_y+(float)((gyro_y)/131)*dt)+0.02*(pitch_y_acc);
-             //Integracion respecto del tiempo para calcular el YAW
-            // yaw_z=yaw_z+(float)((gyro_z)/131)*dt; //Se va a la app
-               entera_x[i++] = roll_x;
-
-
-
-
+	unsigned char dato_temp;	//Asignamos un dato temporal
+	if (LPUART0->CTRL & (1<<23)){		//Checamos que la interrupcion del transmiter este habilitidad
+		if((LPUART0->STAT) & (1<<23)){	//Checamos la bandera del transmiter
+			if(digito < 4){					//Con esta condicion mandamos las variables que vayammos a usar en blueetoth
+				LPUART0->DATA = monitoreo[digito++] + 0x30;	//Se manda la variable numerica digito por digito
+			} else {					//Y despues de la variable mandamos una coma que indica que cambiamos de variable
+					LPUART0->DATA = ','; //Se manda la coma
+					digito = 0;				//reiniciamos t2 a 0
+					LPUART0->CTRL&=~(1<<19)+(1<<23);	//Apagamos el transmiter
+			}
+		}
+	}
 }
-
-void init_UART(void)
-{
-	PCC->PCCn[PCC_PORTC_INDEX]=1<<30;
-	PORTC->PCR[7]=2<<8;						//LPUART1 TX
-	PORTC->PCR[6]=2<<8;						//LPUART1 RX
-
-	SCG->SIRCDIV=1<<8;						//SIRCDIV2: 8 MHz/1
-
-	PCC->PCCn[PCC_LPUART1_INDEX]=2<<24;		//SIRCDIV2
-	PCC->PCCn[PCC_LPUART1_INDEX]|=1<<30;
-	LPUART1->BAUD|=52;						//BAUD_SRG=CLK_UART/(16*9600)
-	LPUART1->CTRL|=(1<<19)+(1<<18)+(1<<23);			//TE=RE=1
-
-	S32_NVIC->ISER[33/32]=(1<<(33%32));
-}
-
-
-
-void LPUART1_RxTx_IRQHandler(void){
-	//LPUART1->DATA=mensaje1[i++];
-	LPUART1->DATA=entera_x[i++];
-    if(entera_x[i]==0){
-        LPUART1->CTRL&=~(1<<23);
-        i=0;
-    }
-
-}
-
 
 
 
 int main(void)
 {
-	init_UART();
-
-    SIRC_div();
-    LPI2C0_init();
-
-    PCC->PCCn[PCC_PORTD_INDEX]=(1<<30);
-    PORTD->PCR[0]=(1<<8);
-    PTD->PDDR=1;
-
-    PCC->PCCn[PCC_LPIT_INDEX]=(1<<30)+(2<<24);
-    LPIT0->MCR=1;
-    LPIT0->MIER|=4;
-    LPIT0->TMR[2].TVAL=250000; //X CUENTAS de 125ns CMR
-    LPIT0->TMR[2].TCTRL=1;
-
-    S32_NVIC->ISER[50/32]|=(1<<(50%32));
 
 
 

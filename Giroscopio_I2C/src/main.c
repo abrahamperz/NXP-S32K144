@@ -1,4 +1,3 @@
-
 #include "S32K144.h" /* include peripheral declarations S32K144 */
 #include <math.h>
 // * Detailed Description:
@@ -35,18 +34,14 @@ int16_t aceleracion_y;
 int8_t aceleracionz[2];
 int16_t aceleracion_z;
 
-int entera_x[];
 int8_t gyrox[2];
 int16_t gyro_x;
 
-
 int8_t gyroy[2];
 int16_t gyro_y;
-unsigned char entera_y[];
 
 int8_t gyroz[2];
 int16_t gyro_z;
-unsigned char entera_z[];
 
 double pitch_y_acc;
 double roll_x_acc;
@@ -56,7 +51,6 @@ float dt;
 double pitch_y;
 double roll_x;
 double yaw_z;
-unsigned char i=0;
 /*******************************************************************************
 Function Name : SIRC_div_8MHz
 Notes         : SIRCDIV2 divide by 1 (8MHz)
@@ -96,9 +90,9 @@ void LPI2C0_init(void)
 {
     // Peripheral Clock Controller
     PCC-> PCCn[PCC_PORTA_INDEX] = 1<<30;
-    // PTA2 ALT3 LPI2C0_SDA VERDE
+    // PTA2 ALT3 LPI2C0_SDA
     PORTA->PCR[2] |= 3<<8;
-    // PTA3 ALT3 LPI2C0_SCL AZUL
+    // PTA3 ALT3 LPI2C0_SCL
     PORTA->PCR[3] |= 3<<8;
 
     PCC->PCCn[PCC_LPI2C0_INDEX] |= 2<<24;   // SIRCDIV2_CLK (8 MHz)
@@ -324,55 +318,15 @@ void LPIT0_Ch2_IRQHandler(void)
              tiempo_prev=((float)bandera*(0.03125));
 
              //Aplicar el filtro complementario pasa bajas para el acelerometro y pasa altas para el giroscopio
-              roll_x=0.98*(roll_x+(float)((gyro_x)/131)*dt)+0.02*(roll_x_acc); //250/32768=1/131
-             pitch_y=0.98*(pitch_y+(float)((gyro_y)/131)*dt)+0.02*(pitch_y_acc);
+            // roll_x=0.98*(roll_x+(float)((gyro_x)/131)*dt)+0.02*(roll_x_acc); //250/32768=1/131
+            // pitch_y=0.98*(pitch_y+(float)((gyro_y)/131)*dt)+0.02*(pitch_y_acc);
              //Integracion respecto del tiempo para calcular el YAW
-               yaw_z=yaw_z+(float)((gyro_z)/131)*dt; //Se va a la app
-               entera_x[];= roll_x;
-               //entera_y[] = pitch_y;
-              // entera_z[] = yaw_z;
-
-
-
-
+             yaw_z=yaw_z+(float)((gyro_z)/131)*dt; //Se va a la app
 
 }
-
-void init_UART(void)
-{
-	PCC->PCCn[PCC_PORTC_INDEX]=1<<30;
-	PORTC->PCR[7]=2<<8;						//LPUART1 TX
-	PORTC->PCR[6]=2<<8;						//LPUART1 RX
-
-	SCG->SIRCDIV=1<<8;						//SIRCDIV2: 8 MHz/1
-
-	PCC->PCCn[PCC_LPUART1_INDEX]=2<<24;		//SIRCDIV2
-	PCC->PCCn[PCC_LPUART1_INDEX]|=1<<30;
-	LPUART1->BAUD|=52;						//BAUD_SRG=CLK_UART/(16*9600)
-	LPUART1->CTRL|=(1<<19)+(1<<18)+(1<<23);			//TE=RE=1
-
-	S32_NVIC->ISER[33/32]=(1<<(33%32));
-}
-
-
-
-void LPUART1_RxTx_IRQHandler(void){
-	//LPUART1->DATA=mensaje1[i++];
-	LPUART1->DATA=entera_x[];
-    if(entera_y[]==0){
-        LPUART1->CTRL&=~(1<<23);
-
-    }
-
-}
-
-
-
 
 int main(void)
 {
-	init_UART();
-
     SIRC_div();
     LPI2C0_init();
 
@@ -387,7 +341,6 @@ int main(void)
     LPIT0->TMR[2].TCTRL=1;
 
     S32_NVIC->ISER[50/32]|=(1<<(50%32));
-
 
 
 

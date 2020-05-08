@@ -1,0 +1,24 @@
+09:08:22 **** Incremental Build of configuration Debug for project Individual_Evasion_obstaculo ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Individual_Evasion_obstaculo.elf
+Executing target #5 Individual_Evasion_obstaculo.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Individual_Evasion_obstaculo.elf" "@Individual_Evasion_obstaculo.args"   
+Finished building target: Individual_Evasion_obstaculo.elf
+ 
+Executing target #6 Individual_Evasion_obstaculo.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Individual_Evasion_obstaculo.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4808	     28	   3096	   7932	   1efc	Individual_Evasion_obstaculo.elf
+Finished building: Individual_Evasion_obstaculo.siz
+ 
+
+09:08:23 Build Finished (took 1s.163ms)
+
