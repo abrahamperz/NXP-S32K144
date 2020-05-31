@@ -25,7 +25,11 @@
 
 
 unsigned char error = 0;
+unsigned short i=0;
+unsigned char dato=0;
 int prueba[]={1,2,3,4};
+int mensaje[]={4,8,12,16};
+
 int8_t aceleracionx[2];
 int16_t aceleracion_x;
 
@@ -339,58 +343,55 @@ void LPIT0_Ch2_IRQHandler(void)
 }
 
 
-
-void LPIT_PORTD_init(void){
-
-	PCC->PCCn[PCC_PORTD_INDEX]=(1<<30);
-	    PORTD->PCR[0]=(1<<8);
-	    PTD->PDDR=1;
-
-	    PCC->PCCn[PCC_LPIT_INDEX]=(1<<30)+(2<<24);
-	    LPIT0->MCR=1;
-	    LPIT0->MIER|=4;
-	    LPIT0->TMR[2].TVAL=250000; //X CUENTAS de 125ns CMR
-	    LPIT0->TMR[2].TCTRL=1;
-
-	    S32_NVIC->ISER[50/32]|=(1<<(50%32));
-
-}
-
-
-void UART_init(void){
-
-	PCC->PCCn[PCC_PORTB_INDEX] = (1<<30);	//Reloj del PUERTOB
-	PORTB->PCR[0]=(2<<8);				//PUERTOB PIN 0 como UART Rx
-	PORTB->PCR[1]=(2<<8);				//PUERTOB PIN 1 como UART Tx
-
-	PCC->PCCn[PCC_LPUART0_INDEX] = (1<<30) + (3<<24); //FIRCDIV2
-	LPUART0->BAUD = 312;			//Baud rate de 312 para frecuencia de 9600Hz
-	//LPUART0->CTRL = (3<<18);		//Habilitar receptor y transmisor
-	LPUART0->CTRL|=(1<<19)+(1<<18)+(1<<23);
-	S32_NVIC->ISER[31/32]|=(1<<(31%32));
-
-}
-
-void LPUART0_RxTx_IRQHandler (void) //CHECHAR QUE BANDERA NOS TRAJO A LA INTERRUPCION! (SOLO SI ESTAS USANDO EL RECEIVER Y EL TRANSMITER)
+void LPUART2_RxTx_IRQHandler (void)
 {
+                if ((LPUART2->STAT & (1<<23))==(1<<23))   //Rx empty flag
+                {
+                	LPUART2->DATA=mensaje[i++];
 
+                    if (dato!='2'){LPUART2->CTRL&=~(1<<23);}
+                }
+                if ((LPUART2->STAT & (1<<21))==(1<<21))   //Rx full flag
+                {
+                    dato=LPUART2->DATA;
+                }
 
-
-	unsigned char i=0;	//Asignamos un dato temporal
-	LPUART0->DATA=prueba[i++];
-	    if(prueba[i]==0){
-	        LPUART1->CTRL&=~(1<<23);
-	        //i=0;
-	    }
 }
+
+
+void UART_PortA_init(void){
+
+	 PCC->PCCn[PCC_PORTA_INDEX]=1<<30;
+	                PORTA->PCR[9]=2<<8;  //tx                                                                               //LPUART2 TX
+	                PORTA->PCR[8]=2<<8;  //rx                                                                           //LPUART2 RX
+
+	                //LED de respuesta
+	                PCC->PCCn[PCC_PORTD_INDEX]=1<<30;
+	                PORTD->PCR[16]=(1<<8);    //GPIO
+	                PORTD->PCR[15]=(1<<8);    //GPIO
+	                PORTD->PCR[0]=(1<<8);     //GPIO
+	                PTD->PDDR=(1<<16)+(1<<15)+1;   //outputs
+	                PTD->PDOR=(1<<16)+(1<<15)+1;   //estado inicial off
+
+	                SCG->SIRCDIV=1<<8;                                                                                    //SIRCDIV2: 8 MHz/1
+
+	                PCC->PCCn[PCC_LPUART2_INDEX]=2<<24;                     //SIRCDIV2
+	                PCC->PCCn[PCC_LPUART2_INDEX]|=1<<30;
+	                LPUART2->BAUD|=52;                                                                                 //BAUD_SRG=CLK_UART/(16*9600)
+	                LPUART2->CTRL|=(1<<23)+(1<<21)+(1<<19)+(1<<18);   //TE=RE=1
+	                S32_NVIC->ISER[35/32]=(1<<(35%32));
+
+}
+
+
 
 
 int main(void)
 {
-    SIRC_div();
-    LPI2C0_init();
-    UART_init();
-    LPIT_PORTD_init();
+    //SIRC_div();
+    //LPI2C0_init();
+    UART_PortA_init();
+
 
 
 

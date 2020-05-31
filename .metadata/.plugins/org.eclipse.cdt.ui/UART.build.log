@@ -1,4 +1,4 @@
-18:57:40 **** Incremental Build of configuration Debug for project UART ****
+18:01:16 **** Incremental Build of configuration Debug for project UART ****
 make -j4 all 
 Executing target #6 UART.siz
 Invoking: Standard S32DS Print Size
@@ -8,5 +8,5 @@ arm-none-eabi-size --format=berkeley  UART.elf
 Finished building: UART.siz
  
 
-18:57:40 Build Finished (took 540ms)
+18:01:17 Build Finished (took 963ms)
 

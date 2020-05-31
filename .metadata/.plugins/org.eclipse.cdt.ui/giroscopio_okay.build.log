@@ -1,0 +1,12 @@
+21:59:40 **** Incremental Build of configuration Debug for project giroscopio_okay ****
+make -j4 all 
+Executing target #6 giroscopio_okay.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  giroscopio_okay.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12680	     12	   3184	  15876	   3e04	giroscopio_okay.elf
+Finished building: giroscopio_okay.siz
+ 
+
+21:59:40 Build Finished (took 332ms)
+

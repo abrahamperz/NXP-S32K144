@@ -1,0 +1,24 @@
+11:25:27 **** Incremental Build of configuration Debug for project uart_matlab ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: uart_matlab.elf
+Executing target #5 uart_matlab.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "uart_matlab.elf" "@uart_matlab.args"   
+Finished building target: uart_matlab.elf
+ 
+Executing target #6 uart_matlab.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  uart_matlab.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1620	     12	   3072	   4704	   1260	uart_matlab.elf
+Finished building: uart_matlab.siz
+ 
+
+11:25:28 Build Finished (took 1s.195ms)
+

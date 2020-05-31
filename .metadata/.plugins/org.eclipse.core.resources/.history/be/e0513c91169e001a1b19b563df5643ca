@@ -1,0 +1,28 @@
+/*
+ * I2C_giroscopio.h
+ *
+ *  Created on: 22/05/2020
+ *      Author: abraham
+ */
+
+#ifndef I2C_GIROSCOPIO_H_
+#define I2C_GIROSCOPIO_H_
+
+#include "math.h"
+
+void SIRC_div(void);
+void LPI2C0_init(void);
+//static unsigned char bus_busy(void);
+void generate_start_ACK(uint8_t address);
+//static void transmit_data(uint8_t data);
+//static uint8_t generate_stop(void);
+//static void receive_data(int8_t *p_buffer, uint8_t n_bytes);
+uint8_t LPI2C0_write(uint8_t s_w_address, uint8_t s_reg_address, uint8_t byte);
+int8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, int8_t *p_buffer, uint8_t n_bytes);
+void LPI2C0_Master_IRQHandler(void);
+void LPIT0_Ch2_IRQHandler(void);
+void LPUART2_RxTx_IRQHandler (void);
+void UART2_init(void);
+
+
+#endif /* I2C_GIROSCOPIO_H_ */

@@ -1,0 +1,12 @@
+/*
+ * prueba.c
+ *
+ *  Created on: 24/05/2020
+ *      Author: abraham
+ */
+
+
+void prueba (void){
+	unsigned int i;
+	i=0;
+}

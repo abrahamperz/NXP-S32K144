@@ -1,5 +1,5 @@
 /*
- *  Abraham Pérez A01633926
+ *
  *
  * Activamos con pulsos el puente h
  *
@@ -33,23 +33,32 @@ unsigned char duty_cycle=50;
 unsigned char espejo_pin;
 unsigned char i=0;
 unsigned char T=100;
+unsigned char data=0;
+unsigned char dato=0;
+
+unsigned long ruta[3];
 
 void LPUART1_RxTx_IRQHandler (void)
 {
 
 	if ((LPUART1->STAT & (1<<21))==(1<<21))   //Rx
-			{
-			if (LPUART1->DATA == 'A') LPIT0->TMR[0].TCTRL|=1;
-			else if (LPUART1->DATA == 'B') LPIT0->TMR[1].TCTRL|=1;
-			else if (LPUART1->DATA == 'C') LPIT0->TMR[2].TCTRL|=1;
-			else if (LPUART1->DATA == 'D') LPIT0->TMR[3].TCTRL|=1;
-			else if (LPUART1->DATA == 'E')  PCC->PCCn[PCC_LPIT_INDEX]|=(0<<30);
-			}
+	{
+		LPUART2->DATA=dato;
+		if (dato!='2') LPUART2->CTRL&=~(1<<23);
+
+	}
 
 	if ((LPUART1->STAT & (1<<23))==(1<<23)) //TX
-				{
+	{
+		data=LPUART2->DATA;
+		if (data == 'A') LPIT0->TMR[0].TCTRL|=1;
+	    else if (data == 'B') LPIT0->TMR[1].TCTRL|=1;
+	    else if (data == 'C') LPIT0->TMR[2].TCTRL|=1;
+	    else if (data == 'D') LPIT0->TMR[3].TCTRL|=1;
+	    else if (data == 'E')  PCC->PCCn[PCC_LPIT_INDEX]|=(0<<30);
 
-				}
+
+     }
 }
 
 void UART_init(void)
@@ -72,10 +81,10 @@ void UART_init(void)
 void PORTC_init(void)
 {
 	PCC->PCCn[PCC_PORTC_INDEX]=(1<<30);
-	PORTC->PCR[7]=(1<<8);
-	PORTC->PCR[15]=(1<<8);
-	PORTC->PCR[17]=(1<<8);
-	PORTC->PCR[14]=(1<<8);
+	PORTC->PCR[7]=(9<<16)+(1<<8);
+	PORTC->PCR[15]=(9<<16)+(1<<8);
+	PORTC->PCR[17]=(9<<16)+(1<<8);
+	PORTC->PCR[14]=(9<<16)+(1<<8);
 	PTC->PDDR=(1<<7)+(1<<15)+(1<<17)+(1<<14);
 	PTC->PDOR=0;
 }
@@ -100,7 +109,7 @@ void LPIT0_Ch0_init(void)
 }
 void LPIT0_Ch0_IRQHandler (void)
 {
-PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30)
+
 LPIT0->MSR|=1;
 //Borrar bandera
 LPIT0->TMR[0].TCTRL&=~(1<<0);
@@ -140,7 +149,7 @@ void LPIT0_Ch1_init(void)
 }
 void LPIT0_Ch1_IRQHandler (void)
 {
-PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30)
+
 LPIT0->MSR|=(1<<2);
 //Borrar bandera
 LPIT0->TMR[1].TCTRL&=~(1<<0);
@@ -180,7 +189,7 @@ void LPIT0_Ch2_init(void)
 }
 void LPIT0_Ch2_IRQHandler (void)
 {
-PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30)
+
 LPIT0->MSR|=(1<<3);
 //Borrar bandera
 LPIT0->TMR[2].TCTRL&=~(1<<0);
@@ -221,11 +230,11 @@ void LPIT0_Ch3_init(void)
 }
 void LPIT0_Ch3_IRQHandler (void)
 {
-PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30)
+
 LPIT0->MSR|=(1<<4);
 //Borrar bandera
 LPIT0->TMR[3].TCTRL&=~(1<<0);
-PTC->PTOR=derecha;
+PTC->PTOR=izquierda;
 
 if (espejo_pin==1)
 {
@@ -250,6 +259,8 @@ int main(void)
 	LPIT0_Ch2_init();
 	LPIT0_Ch3_init();
 
-    while(1){}
+    while(1){
+
+    }
 	return 0;
 }

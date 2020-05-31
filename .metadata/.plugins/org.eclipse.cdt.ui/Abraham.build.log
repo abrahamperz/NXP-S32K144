@@ -1,0 +1,12 @@
+08:14:29 **** Incremental Build of configuration Debug for project Abraham ****
+make -j4 all 
+Executing target #6 Abraham.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Abraham.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1880	      0	   3080	   4960	   1360	Abraham.elf
+Finished building: Abraham.siz
+ 
+
+08:14:30 Build Finished (took 484ms)
+

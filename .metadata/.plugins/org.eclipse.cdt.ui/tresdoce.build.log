@@ -1,0 +1,12 @@
+10:18:58 **** Incremental Build of configuration Debug for project tresdoce ****
+make -j4 all 
+Executing target #6 tresdoce.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  tresdoce.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1688	     12	   3072	   4772	   12a4	tresdoce.elf
+Finished building: tresdoce.siz
+ 
+
+10:18:59 Build Finished (took 326ms)
+

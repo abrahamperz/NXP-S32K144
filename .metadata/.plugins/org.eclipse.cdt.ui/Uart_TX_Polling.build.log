@@ -1,4 +1,4 @@
-11:45:04 **** Incremental Build of configuration Debug for project UART_TX_Polling ****
+11:58:11 **** Incremental Build of configuration Debug for project UART_TX_Polling ****
 make -j4 all 
 Executing target #6 UART_TX_Polling.siz
 Invoking: Standard S32DS Print Size
@@ -8,5 +8,5 @@ arm-none-eabi-size --format=berkeley  UART_TX_Polling.elf
 Finished building: UART_TX_Polling.siz
  
 
-11:45:04 Build Finished (took 270ms)
+11:58:12 Build Finished (took 811ms)
 

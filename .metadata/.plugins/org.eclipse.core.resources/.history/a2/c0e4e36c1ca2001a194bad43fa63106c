@@ -1,0 +1,30 @@
+
+
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+
+#include "rutas_app.h"
+#include "I2C_giroscopio.h"
+#include "evasion_obstaculos.h"
+
+
+int main(void)
+{
+	//I2C
+	SIRC_div();
+	LPI2C0_init();
+
+	//Rutas app
+	UART_init();
+	UART2_init();
+ 	LPIT0_Ch3_init();
+
+ 	//Activación de motores
+	PORTC_init();
+
+	//Evasión obstaculos
+
+
+
+
+	return 0;
+}

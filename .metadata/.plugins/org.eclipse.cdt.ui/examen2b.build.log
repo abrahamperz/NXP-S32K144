@@ -1,0 +1,12 @@
+10:50:57 **** Build of configuration Debug for project examen2b ****
+make -j4 all 
+Executing target #6 examen2b.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  examen2b.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3288	      4	   3096	   6388	   18f4	examen2b.elf
+Finished building: examen2b.siz
+ 
+
+10:50:59 Build Finished (took 1s.755ms)
+

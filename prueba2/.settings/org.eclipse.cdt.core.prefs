@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.debug.1920402854/PATH/delimiter=;
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.debug.1920402854/PATH/operation=prepend
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.debug.1920402854/PATH/value=
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.debug.1920402854/append=true
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.debug.1920402854/appendContributed=true
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.release.542274934/PATH/delimiter=;
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.release.542274934/PATH/operation=prepend
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.release.542274934/PATH/value=
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.release.542274934/append=true
+environment/project/com.freescale.s32ds.cross.gnu.arm.cortexm.lib.release.542274934/appendContributed=true

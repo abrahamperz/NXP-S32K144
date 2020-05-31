@@ -1,0 +1,140 @@
+19:52:53 **** Incremental Build of configuration Debug for project examen2 ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c:138:1: warning: initialization from incompatible pointer type
+ double* datos[4]={&roll_x_acc,&pitch_y_acc,&yaw_z,&dato};
+ ^
+../src/main.c:138:1: warning: (near initialization for 'datos[3]')
+../src/main.c: In function 'LPUART1_RxTx_IRQHandler':
+../src/main.c:251:17: warning: unused variable 'i' [-Wunused-variable]
+   unsigned char i=0;
+                 ^
+../src/main.c: In function 'PORTC_IRQHandler':
+../src/main.c:338:3: warning: statement with no effect [-Wunused-value]
+   direccion == (1<<5);
+   ^
+../src/main.c:340:8: warning: statement with no effect [-Wunused-value]
+  else  direccion == (1<<5);
+        ^
+../src/main.c:342:2: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  if (PORTC->PCR[7]=0<<24){
+  ^
+../src/main.c:346:2: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  if (PORTC->PCR[14]=0<<24){
+  ^
+../src/main.c:66:15: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define atras (1<<14)     //L
+               ^
+../src/main.c:348:15: note: in expansion of macro 'atras'
+    movimiento=atras;
+               ^
+../src/main.c:350:2: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  if (PORTC->PCR[15]=0<<24){
+  ^
+../src/main.c:67:17: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define derecha (1<<15)    //L
+                 ^
+../src/main.c:352:15: note: in expansion of macro 'derecha'
+    movimiento=derecha;
+               ^
+../src/main.c:354:2: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+  if (PORTC->PCR[17]=0<<24){
+  ^
+../src/main.c:68:19: warning: large integer implicitly truncated to unsigned type [-Woverflow]
+ #define izquierda (1<<17) //
+                   ^
+../src/main.c:356:15: note: in expansion of macro 'izquierda'
+    movimiento=izquierda;
+               ^
+../src/main.c: In function 'LPI2C0_Master_IRQHandler':
+../src/main.c:691:39: warning: pointer targets in passing argument 3 of 'LPI2C0_read' differ in signedness [-Wpointer-sign]
+    LPI2C0_read((0x68<<1)+1,0b01010011,var_read,2);
+                                       ^
+../src/main.c:662:9: note: expected 'uint8_t *' but argument is of type 'int8_t *'
+ uint8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes)
+         ^
+../src/main.c:703:45: warning: pointer targets in passing argument 3 of 'LPI2C0_read' differ in signedness [-Wpointer-sign]
+                LPI2C0_read((0x68<<1)+1,0x3B,aceleracionx,2);
+                                             ^
+../src/main.c:662:9: note: expected 'uint8_t *' but argument is of type 'int8_t *'
+ uint8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes)
+         ^
+../src/main.c:707:45: warning: pointer targets in passing argument 3 of 'LPI2C0_read' differ in signedness [-Wpointer-sign]
+                LPI2C0_read((0x68<<1)+1,0x3D,aceleraciony,2);
+                                             ^
+../src/main.c:662:9: note: expected 'uint8_t *' but argument is of type 'int8_t *'
+ uint8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes)
+         ^
+../src/main.c:711:45: warning: pointer targets in passing argument 3 of 'LPI2C0_read' differ in signedness [-Wpointer-sign]
+                LPI2C0_read((0x68<<1)+1,0x3F,aceleracionz,2);
+                                             ^
+../src/main.c:662:9: note: expected 'uint8_t *' but argument is of type 'int8_t *'
+ uint8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes)
+         ^
+../src/main.c:714:45: warning: pointer targets in passing argument 3 of 'LPI2C0_read' differ in signedness [-Wpointer-sign]
+                LPI2C0_read((0x68<<1)+1,0x43,gyrox,2);
+                                             ^
+../src/main.c:662:9: note: expected 'uint8_t *' but argument is of type 'int8_t *'
+ uint8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes)
+         ^
+../src/main.c:721:45: warning: pointer targets in passing argument 3 of 'LPI2C0_read' differ in signedness [-Wpointer-sign]
+                LPI2C0_read((0x68<<1)+1,0x45,gyroy,2);
+                                             ^
+../src/main.c:662:9: note: expected 'uint8_t *' but argument is of type 'int8_t *'
+ uint8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes)
+         ^
+../src/main.c:724:45: warning: pointer targets in passing argument 3 of 'LPI2C0_read' differ in signedness [-Wpointer-sign]
+                LPI2C0_read((0x68<<1)+1,0x47,gyroz,2);
+                                             ^
+../src/main.c:662:9: note: expected 'uint8_t *' but argument is of type 'int8_t *'
+ uint8_t LPI2C0_read(uint8_t s_r_address, uint8_t s_reg_address, uint8_t *p_buffer, uint8_t n_bytes)
+         ^
+../src/main.c:728:16: warning: implicit declaration of function 'atan' [-Wimplicit-function-declaration]
+                *datos[2]=pitch_y_acc=atan(-1*(((float)aceleracion_x)/16384)/sqrt(pow(((float)aceleracion_y/16384),2)+pow(((float)aceleracion_z/16384),2)))*(57.295779); // 2/32768=1/16384 en terminos de g, 180/pirad=57.295779
+                ^
+../src/main.c:728:38: warning: incompatible implicit declaration of built-in function 'atan'
+                *datos[2]=pitch_y_acc=atan(-1*(((float)aceleracion_x)/16384)/sqrt(pow(((float)aceleracion_y/16384),2)+pow(((float)aceleracion_z/16384),2)))*(57.295779); // 2/32768=1/16384 en terminos de g, 180/pirad=57.295779
+                                      ^
+../src/main.c:728:16: warning: implicit declaration of function 'sqrt' [-Wimplicit-function-declaration]
+                *datos[2]=pitch_y_acc=atan(-1*(((float)aceleracion_x)/16384)/sqrt(pow(((float)aceleracion_y/16384),2)+pow(((float)aceleracion_z/16384),2)))*(57.295779); // 2/32768=1/16384 en terminos de g, 180/pirad=57.295779
+                ^
+../src/main.c:728:77: warning: incompatible implicit declaration of built-in function 'sqrt'
+                *datos[2]=pitch_y_acc=atan(-1*(((float)aceleracion_x)/16384)/sqrt(pow(((float)aceleracion_y/16384),2)+pow(((float)aceleracion_z/16384),2)))*(57.295779); // 2/32768=1/16384 en terminos de g, 180/pirad=57.295779
+                                                                             ^
+../src/main.c:728:16: warning: implicit declaration of function 'pow' [-Wimplicit-function-declaration]
+                *datos[2]=pitch_y_acc=atan(-1*(((float)aceleracion_x)/16384)/sqrt(pow(((float)aceleracion_y/16384),2)+pow(((float)aceleracion_z/16384),2)))*(57.295779); // 2/32768=1/16384 en terminos de g, 180/pirad=57.295779
+                ^
+../src/main.c:728:82: warning: incompatible implicit declaration of built-in function 'pow'
+                *datos[2]=pitch_y_acc=atan(-1*(((float)aceleracion_x)/16384)/sqrt(pow(((float)aceleracion_y/16384),2)+pow(((float)aceleracion_z/16384),2)))*(57.295779); // 2/32768=1/16384 en terminos de g, 180/pirad=57.295779
+                                                                                  ^
+../src/main.c: At top level:
+../src/main.c:75:9: warning: array 'datos_recibidosI2C' assumed to have one element
+ int16_t datos_recibidosI2C[];
+         ^
+../src/main.c:76:9: warning: array 'datos_tx' assumed to have one element
+ int16_t datos_tx[];
+         ^
+../src/main.c:109:14: warning: array 'arreglo' assumed to have one element
+ unsigned int arreglo[];
+              ^
+Finished building: ../src/main.c
+ 
+Building target: examen2.elf
+Executing target #5 examen2.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "examen2.elf" "@examen2.args"   
+Finished building target: examen2.elf
+ 
+Executing target #6 examen2.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  examen2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13888	     28	   3216	  17132	   42ec	examen2.elf
+Finished building: examen2.siz
+ 
+
+19:52:55 Build Finished (took 1s.599ms)
+

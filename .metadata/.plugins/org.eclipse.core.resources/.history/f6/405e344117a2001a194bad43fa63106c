@@ -1,0 +1,84 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+-include ../makefile.local
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS_QUOTED += \
+"../src/I2C_giroscopio.c" \
+"../src/evasion_obstaculos.c" \
+"../src/main.c" \
+"../src/rutas_app.c" \
+
+C_SRCS += \
+../src/I2C_giroscopio.c \
+../src/evasion_obstaculos.c \
+../src/main.c \
+../src/rutas_app.c \
+
+OBJS_OS_FORMAT += \
+./src/I2C_giroscopio.o \
+./src/evasion_obstaculos.o \
+./src/main.o \
+./src/rutas_app.o \
+
+C_DEPS_QUOTED += \
+"./src/I2C_giroscopio.d" \
+"./src/evasion_obstaculos.d" \
+"./src/main.d" \
+"./src/rutas_app.d" \
+
+OBJS += \
+./src/I2C_giroscopio.o \
+./src/evasion_obstaculos.o \
+./src/main.o \
+./src/rutas_app.o \
+
+OBJS_QUOTED += \
+"./src/I2C_giroscopio.o" \
+"./src/evasion_obstaculos.o" \
+"./src/main.o" \
+"./src/rutas_app.o" \
+
+C_DEPS += \
+./src/I2C_giroscopio.d \
+./src/evasion_obstaculos.d \
+./src/main.d \
+./src/rutas_app.d \
+
+
+# Each subdirectory must supply rules for building sources it contributes
+src/I2C_giroscopio.o: ../src/I2C_giroscopio.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #4 $<'
+	@echo 'Invoking: Standard S32DS C Compiler'
+	arm-none-eabi-gcc "@src/I2C_giroscopio.args" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "src/I2C_giroscopio.o" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/evasion_obstaculos.o: ../src/evasion_obstaculos.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #5 $<'
+	@echo 'Invoking: Standard S32DS C Compiler'
+	arm-none-eabi-gcc "@src/evasion_obstaculos.args" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "src/evasion_obstaculos.o" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/main.o: ../src/main.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #6 $<'
+	@echo 'Invoking: Standard S32DS C Compiler'
+	arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "src/main.o" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src/rutas_app.o: ../src/rutas_app.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #7 $<'
+	@echo 'Invoking: Standard S32DS C Compiler'
+	arm-none-eabi-gcc "@src/rutas_app.args" -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "src/rutas_app.o" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

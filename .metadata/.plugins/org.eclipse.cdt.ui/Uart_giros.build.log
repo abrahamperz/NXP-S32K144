@@ -1,0 +1,28 @@
+12:07:25 **** Incremental Build of configuration Debug for project Uart_giros ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c:46:1: warning: initialization from incompatible pointer type
+ double* datos[4]={&roll_x_acc,&pitch_y_acc,&yaw_z,&dato};
+ ^
+../src/main.c:46:1: warning: (near initialization for 'datos[3]')
+Finished building: ../src/main.c
+ 
+Building target: Uart_giros.elf
+Executing target #5 Uart_giros.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Uart_giros.elf" "@Uart_giros.args"   
+Finished building target: Uart_giros.elf
+ 
+Executing target #6 Uart_giros.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Uart_giros.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12768	     32	   3200	  16000	   3e80	Uart_giros.elf
+Finished building: Uart_giros.siz
+ 
+
+12:07:26 Build Finished (took 1s.174ms)
+

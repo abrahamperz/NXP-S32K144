@@ -2,6 +2,11 @@
      Author: Abraham Pérez Martínez A01633926
      La ecuación cinematica de del robot, esta validada por simulaciones en matlab
      considerando radio de llanta, distancia entre rueda y velocidad deseada
+
+
+     Activamos con pulsos el puente h
+	 Movimiento hacia adelante (1<<14)+(1<<7)
+	 Se manejara cada LPIT0 para controlar cada motor
  */
 
 
@@ -37,7 +42,7 @@ unsigned char distancia_cm;
 void LPIT0_Ch0_IRQHandler (void)
 {
 	unsigned short delay;
-	PTC->PDOR=(1<<14)+(1<<7);
+	PTC->PDOR=(1<<14);
 	for (i = 0;i<=5;i++)
 	{
 
@@ -45,6 +50,7 @@ void LPIT0_Ch0_IRQHandler (void)
 		LPIT0->TMR[0].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
 		//ecuación cinematica del robot
 		duty_right=((2*V)+(Wm[i]*L))/(2*R);
+		//int Wm[6]={(0), (left), (right), (right) , (left), (0)};
 		if (espejo_pin==1)
 		{
 			espejo_pin=0;
@@ -55,9 +61,10 @@ void LPIT0_Ch0_IRQHandler (void)
 			espejo_pin=1;
 			LPIT0->TMR[0].TVAL=(((duty_right)*T)/100); //PWM
 		}
-		LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
+
 		for (delay=0; delay<= 5000;delay++);
 	}
+		LPIT0->TMR[0].TCTRL|=(1<<0);		//Enable->Trigger
 }
 void LPIT0_Ch0_init(void)
 {
@@ -75,32 +82,36 @@ void LPIT0_Ch0_init(void)
 	LPIT0->TMR[0].TCTRL|=1; //flag
 	S32_NVIC->ISER[48/32]=(1<<(48%32));
 }
+
 void LPIT0_Ch1_IRQHandler (void)
 {
 	unsigned short delay;
-	PTC->PDOR=(1<<14)+(1<<7);
+	PTC->PDOR=(1<<7);
 	for (i = 0;i<=5;i++)
 	{
-		//ecuación cinematica del robot
+
 		LPIT0->MSR=1;					//Borrar bandera
 		LPIT0->TMR[1].TCTRL&=~(1<<0);  //Escribimos en TVAL estando detenido el timer
+		//ecuación cinematica del robot
+		duty_left=((2*V)-(Wm[i]*L))/(2*R);
+		//int Wm[6]={(0), (left), (right), (right) , (left), (0)};
 		if (espejo_pin==1)
 		{
 			espejo_pin=0;
-			LPIT0->TMR[1].TVAL=(((100-duty_left)*T)/100);
+			LPIT0->TMR[1].TVAL=(((100-duty_left)*T)/100); //PWM
 		}
 		else
 		{
 			espejo_pin=1;
-			LPIT0->TMR[1].TVAL=(((duty_left)*T)/100);
+			LPIT0->TMR[1].TVAL=(((duty_left)*T)/100); //PWM
 		}
-		LPIT0->TMR[1].TCTRL|=(1<<0);		//Enable->Trigger
+		//LPIT0->TMR[1].TCTRL|=(1<<0);		//Enable->Trigger
 		for (delay=0; delay<= 5000;delay++);
 	}
+	    LPIT0->TMR[1].TCTRL|=(1<<0);		//Enable->Trigger
 }
 void LPIT0_Ch1_init(void)
 {
-
 	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
     PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
 
@@ -111,17 +122,19 @@ void LPIT0_Ch1_init(void)
 	asm("nop");
 	LPIT0->TMR[1].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
 	LPIT0->TMR[1].TVAL=T;
-	LPIT0->MIER=2;
-	//LPIT0->TMR[1].TCTRL|=1; flag
+	LPIT0->MIER=1;
+	LPIT0->TMR[1].TCTRL|=1; //flag
 	S32_NVIC->ISER[49/32]=(1<<(49%32));
 }
+
+
 void PORTC_init(void)
 {
 	PCC->PCCn[PCC_PORTC_INDEX]=(1<<30);
-	PORTC->PCR[7]=(1<<8);
-	PORTC->PCR[15]=(1<<8);
-	PORTC->PCR[17]=(1<<8);
-	PORTC->PCR[14]=(1<<8);
+	PORTC->PCR[7]=(9<<16)+(1<<8);
+	PORTC->PCR[15]=(9<<16)+(1<<8);
+	PORTC->PCR[17]=(9<<16)+(1<<8);
+	PORTC->PCR[14]=(9<<16)+(1<<8);
 	PTC->PDDR=(1<<17)+(1<<15)+(1<<14)+(1<<7);
 	PTC->PDOR=0;
 
@@ -152,6 +165,7 @@ void FTM2_Ch0_Ch1_IRQHandler (void)
 				//flag enable
 				LPIT0->TMR[0].TCTRL|=1;
 				LPIT0->TMR[1].TCTRL|=1;
+
 
 			}
 		}
@@ -197,12 +211,13 @@ void FTM2_Ch0_Ch1_init(void)
 
 int main(void)
 {
+
 	SCG->SIRCDIV=(1<<8)+(1<<0);
 	ultrasonico_init();
 	FTM2_Ch0_Ch1_init();
 	PORTC_init();
 	LPIT0_Ch0_init();
-	LPIT0_Ch1_init();
+
 
 
 

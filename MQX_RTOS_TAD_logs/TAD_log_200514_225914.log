@@ -1,0 +1,110 @@
+(11:20:09.746) INFO: [TadState] TAD state init (NONE)
+(11:21:41.589) INFO: [TadModel] DSF session ID 0 has started
+(11:21:51.847) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(11:21:54.681) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(11:21:54.693) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(11:22:25.616) INFO: [TadModel] DSF session ID 1 has started
+(11:22:31.455) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(11:22:32.905) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(11:22:32.934) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(11:22:33.968) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(11:23:08.169) INFO: [TadModel] DSF session ID 2 has started
+(11:23:09.320) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(11:23:12.131) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(11:23:13.582) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(11:23:13.611) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(11:23:15.917) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(11:23:35.585) INFO: [TadModel] DSF session ID 3 has started
+(11:23:37.149) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(11:23:40.004) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(11:23:41.656) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(11:23:41.677) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(11:23:48.804) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(11:25:26.099) INFO: [TadModel] DSF session ID 4 has started
+(11:25:27.532) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(11:25:30.553) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(11:25:32.854) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(11:25:32.883) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(11:25:33.870) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(11:33:15.215) INFO: [TadState] TAD state changed from DEBUG_RESUMED to READY (Suspended, SIGNAL)
+(11:33:15.727) ReadingException: com.freescale.mqx.gdb.tad.model.globalstatus.TadGlobalStatusFactory.isMqxDataValid() at 60.line "readLongVariableSafely(_mqx_kernel_data)"
+(11:33:15.729) ERROR: [TadGlobalStatusFactory] Kernel Data NOT valid (pointer: 0x0000)
+(11:33:15.730) ERROR: [TadGlobalStatusFactory] MQX data not valid!
+(11:33:15.731) INFO: [TadModel$3] Loading of TAD Global Status took 508 ms
+(11:33:15.731) INFO: [TadGlobalStatusController] TAD global status data is ready!
+(11:33:18.122) INFO: [TadModel] DSF session ID 4 has ended
+(11:33:23.930) INFO: [TadModel] DSF session ID 5 has started
+(11:33:27.445) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(11:33:29.794) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(11:33:29.826) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(11:35:32.059) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(12:02:54.033) INFO: [TadModel] DSF session ID 6 has started
+(12:02:55.312) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(12:02:56.782) INFO: [TadModel] DSF session ID 5 has ended
+(12:02:58.664) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(12:03:00.806) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(12:03:00.835) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(12:03:02.176) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(12:03:30.761) INFO: [TadModel] DSF session ID 7 has started
+(12:03:31.869) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(12:03:33.276) INFO: [TadModel] DSF session ID 6 has ended
+(12:03:34.729) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(12:03:37.103) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(12:03:37.129) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(12:03:37.837) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(12:17:22.499) INFO: [TadModel] DSF session ID 8 has started
+(12:17:23.874) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(12:17:25.352) INFO: [TadModel] DSF session ID 7 has ended
+(12:17:27.405) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(12:17:28.861) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(12:17:28.889) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(12:17:29.763) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(12:45:26.446) INFO: [TadModel] DSF session ID 9 has started
+(12:45:27.914) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(12:45:30.342) INFO: [TadModel] DSF session ID 8 has ended
+(12:45:31.877) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(12:45:33.325) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(12:45:33.353) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(12:45:34.843) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(14:06:30.367) INFO: [TadModel] DSF session ID 10 has started
+(14:06:32.554) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(14:06:34.039) INFO: [TadModel] DSF session ID 9 has ended
+(14:06:35.857) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(14:06:37.347) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(14:06:37.376) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(14:06:38.285) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(16:16:18.110) INFO: [TadModel] DSF session ID 11 has started
+(16:16:19.485) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(16:16:21.034) INFO: [TadModel] DSF session ID 10 has ended
+(16:16:23.620) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(16:16:25.168) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(16:16:25.198) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(16:16:25.800) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(16:22:00.987) INFO: [TadModel] DSF session ID 12 has started
+(16:22:02.216) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(16:22:03.123) INFO: [TadModel] DSF session ID 11 has ended
+(16:22:05.364) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(16:22:07.701) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(16:22:07.731) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(16:22:08.455) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(16:38:07.296) INFO: [TadModel] DSF session ID 13 has started
+(16:38:10.042) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, SIGNAL)
+(16:38:11.441) INFO: [TadModel] DSF session ID 12 has ended
+(16:38:13.292) INFO: [TadState] TAD state changed from NONE to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(16:38:14.816) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(16:38:14.844) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(16:38:15.670) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)
+(16:39:34.701) INFO: [TadState] TAD state changed from DEBUG_RESUMED to READY (Suspended, SIGNAL)
+(16:39:35.211) ReadingException: com.freescale.mqx.gdb.tad.model.globalstatus.TadGlobalStatusFactory.isMqxDataValid() at 60.line "readLongVariableSafely(_mqx_kernel_data)"
+(16:39:35.211) ERROR: [TadGlobalStatusFactory] Kernel Data NOT valid (pointer: 0x0000)
+(16:39:35.211) ERROR: [TadGlobalStatusFactory] MQX data not valid!
+(16:39:35.212) INFO: [TadModel$3] Loading of TAD Global Status took 503 ms
+(16:39:35.212) INFO: [TadGlobalStatusController] TAD global status data is ready!
+(16:39:35.622) INFO: [TadModel] DSF session ID 13 has ended
+(16:40:20.658) INFO: [TadModel] DSF session ID 14 has started
+(16:40:28.218) INFO: [TadModel] DSF session ID 14 has ended
+(16:40:35.588) INFO: [TadModel] DSF session ID 15 has started
+(16:40:37.432) INFO: [TadState] TAD state changed from DEBUG_STARTED to DEBUG_INIT_0 (Suspended, USER_REQUEST)
+(16:40:38.904) INFO: [TadState] TAD state changed from DEBUG_INIT_0 to DEBUG_INIT_1 (Resumed, USER_REQUEST)
+(16:40:38.934) INFO: [TadState] TAD state changed from DEBUG_INIT_1 to DEBUG_SUSPENDED (Suspended, BREAKPOINT)
+(16:40:42.037) INFO: [TadState] TAD state changed from DEBUG_SUSPENDED to DEBUG_RESUMED (Resumed, USER_REQUEST)

@@ -1,0 +1,24 @@
+18:34:11 **** Incremental Build of configuration Debug for project Eduardo ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Eduardo.elf
+Executing target #5 Eduardo.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Eduardo.elf" "@Eduardo.args"   
+Finished building target: Eduardo.elf
+ 
+Executing target #6 Eduardo.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Eduardo.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1892	     20	   3080	   4992	   1380	Eduardo.elf
+Finished building: Eduardo.siz
+ 
+
+18:34:12 Build Finished (took 1s.206ms)
+

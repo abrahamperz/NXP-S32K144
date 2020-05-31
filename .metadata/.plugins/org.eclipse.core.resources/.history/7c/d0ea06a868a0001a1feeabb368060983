@@ -1,0 +1,500 @@
+/*
+ *
+ *
+ * Activamos con pulsos el puente h
+ *
+ * Motor derecho PORTC
+ * 7 adelante
+ * 15 atras
+ *
+ * Motor izquierdo PORTC
+ * 14 adelante
+ * 17 atras
+ *
+ * RX Uart
+ * A Adelante
+ * B atras
+ * C derecha
+ * D izquierda
+ * E alto
+ */
+
+
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+
+#define adelante (1<<14)+(1<<7)   //LPIT0 Channel 0  Seleccionamos pines 7  y 14;
+#define atras (1<<17)+(1<<15)     //LPIT0 Channel 1  Seleccionamos pines 15 y 17;
+#define derecha (1<<17)+(1<<7)    //LPIT0 Channel 2  Seleccionamos pines 7  y 17;
+#define izquierda (1<<15)+(1<<14) //LPIT0 Channel 3  Seleccionamos pines 15 y 14;
+#define alto (0<<17)+(0<<15)+(0<<14)+(0<<7)//
+//define I2C
+#define SCL0 PTE->PCOR=(1<<13)
+#define SCL1 PTE->PSOR=(1<<13)
+#define SDA0 PTE->PCOR=(1<<14)
+#define SDA1 PTE->PSOR=(1<<14)
+
+#define SDA_input PTE->PDDR&=~(1<<14)
+#define SDA_output PTE->PDDR|=(1<<14)
+
+
+//un arreglo para la dirección y otro arreglo para la duracion en milisegundos
+int8_t var_read[8];
+
+int16_t datos_recibidosI2C[];
+int16_t datos_tx[];
+
+int16_t datos_tx[];
+unsigned char duty_cycle=50;
+unsigned char espejo_pin;
+unsigned char i=0;
+unsigned char T=100;
+unsigned char data=0;
+unsigned char dato=0;
+unsigned char error = 0;
+
+void delay (unsigned char tiempoms){
+	i=500*tiempoms;
+	do{
+
+	}while (--i);
+}
+
+
+void LPUART1_RxTx_IRQHandler (void)
+{
+
+	if ((LPUART1->STAT & (1<<21))==(1<<21))   //Rx
+	{
+		LPUART2->DATA=dato;
+		if (dato!='2') LPUART2->CTRL&=~(1<<23);
+
+	}
+
+	if ((LPUART1->STAT & (1<<23))==(1<<23)) //TX
+	{
+		unsigned char i=0;
+		do{
+
+	//se guardan los datos en la variable datos_tx[], para despues enviarselos en el registro
+			//LPUART->DATA
+
+					  unsigned char i=0;
+						  if (datos_recibidosI2C[i] == 0x03){
+
+							  datos_tx[i]= 0x03 + 0x30; //adelante
+							  LPIT0->TMR[0].TCTRL|=1; //adelante
+							  delay(datos_recibidosI2C[i+1]); //tiempo
+							  datos_tx[i+1]= datos_recibidosI2C[i+1] + 0x30; //tiempo
+
+						  }
+						  else if (datos_recibidosI2C[i] == 0x02){
+							  datos_tx[i]= 0x02 + 0x30; //derecha
+							  LPIT0->TMR[2].TCTRL|=1; //derecha
+							  delay(datos_recibidosI2C[i+1]);
+							  datos_tx[i+1]= datos_recibidosI2C[i+1] + 0x30; //tiempo
+
+						  }
+						  else if (datos_recibidosI2C[i] == 0x01){
+							  datos_tx[i]= 0x01 + 0x30; //izquierda
+							  LPIT0->TMR[3].TCTRL|=1; //izquierda
+							  delay(datos_recibidosI2C[i+1]);//tiempo
+							  datos_tx[i+1]= datos_recibidosI2C[i+1] + 0x30; //tiempo
+
+						  }
+						  else if (datos_recibidosI2C[i] == 0x00){
+							  datos_tx[i]= 0x00 + 0x30; //alto
+							  PCC->PCCn[PCC_LPIT_INDEX]|=(0<<30); //alto
+							  delay(datos_recibidosI2C[i+1]);
+							  datos_tx[i+1]= datos_recibidosI2C[i+1] + 0x30; //tiempo
+
+						  }
+						  i+2;
+
+
+			}while (i == 6);
+		  /*aqui se envian los datos anteriormente guardados y conforme se envian
+		el robot hace los movimientos correspondientes con el delay correspondiente */
+		LPUART2->DATA=datos_tx[i++];
+
+     }
+}
+
+void UART_init(void)
+{
+
+	PCC->PCCn[PCC_PORTC_INDEX]=1<<30;
+	PORTC->PCR[7]=2<<8;						//LPUART1 TX
+	PORTC->PCR[6]=2<<8;						//LPUART1 RX
+
+	SCG->SIRCDIV=1<<8;						//SIRCDIV2: 8 MHz/1
+
+	PCC->PCCn[PCC_LPUART1_INDEX]=2<<24;		//SIRCDIV2
+    PCC->PCCn[PCC_LPUART1_INDEX]|=1<<30;
+	LPUART1->BAUD|=52;						//BAUD_SRG=CLK_UART/(16*9600)
+	LPUART1->CTRL|=(1<<21)+(1<<19)+(1<<18);	//TE=RE=1
+	S32_NVIC->ISER[33/32]=(1<<(33%32));
+
+}
+
+void PORTC_init(void)
+{
+	PCC->PCCn[PCC_PORTC_INDEX]=(1<<30);
+	PORTC->PCR[7]=(9<<16)+(1<<8);
+	PORTC->PCR[15]=(9<<16)+(1<<8);
+	PORTC->PCR[17]=(9<<16)+(1<<8);
+	PORTC->PCR[14]=(9<<16)+(1<<8);
+	PTC->PDDR=(1<<7)+(1<<15)+(1<<17)+(1<<14);
+	PTC->PDOR=0;
+}
+void LPIT0_Ch0_init(void)
+{
+
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	SCG->SIRCDIV=(1<<8);  //8MHz/1
+
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[0].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
+	LPIT0->TMR[0].TVAL=T;
+	LPIT0->MIER=1;
+	//LPIT0->TMR[0].TCTRL|=1;
+	S32_NVIC->ISER[48/32]=(1<<(48%32));
+
+}
+void LPIT0_Ch0_IRQHandler (void)
+{
+
+LPIT0->MSR|=1;
+//Borrar bandera
+LPIT0->TMR[0].TCTRL&=~(1<<0);
+PTC->PTOR=adelante;
+
+if (espejo_pin==1)
+{
+espejo_pin=0;
+LPIT0->TMR[0].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+}
+else
+{
+espejo_pin=1;
+LPIT0->TMR[0].TVAL=((((unsigned int)duty_cycle)*T)/100);
+}
+LPIT0->TMR[0].TCTRL|=(1<<0);       //Enable->Trigger
+}
+
+void LPIT0_Ch1_init(void)
+{
+
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	SCG->SIRCDIV=(1<<8);  //8MHz/1
+
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[1].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
+	LPIT0->TMR[1].TVAL=T;
+	LPIT0->MIER|=(1<<2);
+	//LPIT0->TMR[0].TCTRL|=1;
+	S32_NVIC->ISER[49/32]=(1<<(49%32));
+
+}
+void LPIT0_Ch1_IRQHandler (void)
+{
+
+LPIT0->MSR|=(1<<2);
+//Borrar bandera
+LPIT0->TMR[1].TCTRL&=~(1<<0);
+PTC->PTOR=atras;
+
+if (espejo_pin==1)
+{
+espejo_pin=0;
+LPIT0->TMR[1].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+}
+else
+{
+espejo_pin=1;
+LPIT0->TMR[1].TVAL=((((unsigned int)duty_cycle)*T)/100);
+}
+LPIT0->TMR[1].TCTRL|=(1<<0);       //Enable->Trigger
+}
+
+void LPIT0_Ch2_init(void)
+{
+
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	SCG->SIRCDIV=(1<<8);  //8MHz/1
+
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[2].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
+	LPIT0->TMR[2].TVAL=T;
+	LPIT0->MIER|=(1<<3);
+	//LPIT0->TMR[0].TCTRL|=1;
+	S32_NVIC->ISER[50/32]=(1<<(50%32));
+
+}
+void LPIT0_Ch2_IRQHandler (void)
+{
+
+LPIT0->MSR|=(1<<3);
+//Borrar bandera
+LPIT0->TMR[2].TCTRL&=~(1<<0);
+PTC->PTOR=derecha;
+
+if (espejo_pin==1)
+{
+espejo_pin=0;
+LPIT0->TMR[2].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+}
+else
+{
+espejo_pin=1;
+LPIT0->TMR[2].TVAL=((((unsigned int)duty_cycle)*T)/100);
+}
+LPIT0->TMR[2].TCTRL|=(1<<0);       //Enable->Trigger
+}
+
+void LPIT0_Ch3_init(void)
+{
+
+
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	SCG->SIRCDIV=(1<<8);  //8MHz/1
+
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[3].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
+	LPIT0->TMR[3].TVAL=T;
+	LPIT0->MIER|=(1<<4);
+	//LPIT0->TMR[0].TCTRL|=1;
+	S32_NVIC->ISER[51/32]=(1<<(51%32));
+
+}
+void LPIT0_Ch3_IRQHandler (void)
+{
+
+LPIT0->MSR|=(1<<4);
+//Borrar bandera
+LPIT0->TMR[3].TCTRL&=~(1<<0);
+PTC->PTOR=izquierda;
+
+if (espejo_pin==1)
+{
+espejo_pin=0;
+LPIT0->TMR[3].TVAL=(((100-(unsigned int)duty_cycle)*T)/100);
+}
+else
+{
+espejo_pin=1;
+LPIT0->TMR[3].TVAL=((((unsigned int)duty_cycle)*T)/100);
+}
+LPIT0->TMR[3].TCTRL|=(1<<0);       //Enable->Trigger
+}
+
+void delay_us (unsigned char tiempo_us)
+{
+	unsigned char temp;
+	unsigned char i;
+    temp=tiempo_us*10;
+    for (i=0;i<=temp;i++);
+}
+
+void vI2C_init (void)									//configurar mi SCL y mi SDA
+{
+	//configurar pin de SCL: GPIO, output
+	//configurar el pin SDA: GPIO, output
+
+
+	//PTB15 (SCL) PTB16 (SDA)
+
+	PCC->PCCn[PCC_PORTE_INDEX]=(1<<30);
+	PORTE->PCR[13]= 1<<8;
+	PORTE->PCR[14]= 1<<8;
+	SCL0;												//PTx->PCOR=(1<<n) [x representa cualquier puerto y n cualquier bit, cada  quien elige]
+	SDA0;												//PTy->PCOR=(1<<n)
+	PTE->PDDR|=(3<<13);
+
+	IIC_byte_write_TCS1(0x00|0x80, 0x0B);
+	IIC_byte_write_TCS1(0x01|0x80, 0x00);
+	IIC_byte_write_TCS1(0x03|0x80, 0xFF);
+	IIC_byte_write_TCS1(0x0F|0x80, 0x03);
+}
+
+void IIC_start_bit (void)								//BUS TIMING START
+{
+    SDA1;
+    SCL1;
+    //esperar t7
+    delay_us(5);
+    SDA0;
+    //esperar t6
+    delay_us(5);
+    SCL0;
+}
+
+void IIC_stop_bit (void)								//BUS TIMING STOP
+{
+    SDA0;
+    SCL1;
+    //esperar t7
+    delay_us(5);
+    SDA1;
+    //esperar t6
+    delay_us(5);
+    SCL0;
+    SDA0;
+}
+
+void IIC_send_byte (unsigned char dato)					//MANDAR LOS BYTES, DE UN BIT POR UNO (cont=8, porque en un byte son 8 bits)
+{
+unsigned char cont=8;  //contador de bits pendientes
+do{
+
+    if ((dato&(1<<7))==(1<<7)) SDA1;					//mientras siga un bit SDA tiene que ser 1
+    else SDA0;											//al terminar de mandar un bit SDA=0
+    delay_us(1);
+    SCL1;
+    delay_us(5);
+    SCL0;
+    delay_us(5);
+    dato=dato<<1;
+}while (--cont!=0);
+SDA0;													//al terminar de mandar los bits SDA=0
+}
+
+unsigned char IIC_rec_byte (void)						//LEER LOS BYTES, DE UN BIT POR UNO
+{
+	unsigned char cont=8;  //contador de bits pendientes
+	unsigned char dato;
+
+    SDA_input;
+    do{
+    	SCL1;
+    	dato<<=1;
+    	if ((PTE->PDIR & (1<<14))==(1<<14)) dato|=1;
+    	delay_us(5);
+    	SCL0;
+    	delay_us(5);
+    }while (--cont!=0);
+    	SDA_output;
+    	return dato;
+}
+
+unsigned char IIC_ack_input (void)
+{
+unsigned char temp;
+    SDA_input;
+    SCL1;
+    delay_us(1);
+    if ((PTE->PDIR & (1<<14))==0) temp=0;
+    else temp=1;
+    delay_us(5);
+    SCL0;
+    SDA_output;
+    return temp;
+}
+
+void IIC_ack_output (unsigned char dato)
+{
+     if (dato==0) SDA0;
+     else SDA1;
+     SCL1;
+     delay_us(5);
+     SCL0;
+     delay_us(5);
+     SDA0;
+}
+
+void IIC_byte_write_TCS1(unsigned char direccion_int, unsigned char dato)
+{
+    IIC_start_bit();
+    IIC_send_byte(0b01010010);   									//1010 0000. 1010. ID Tipo Mem, 000: Slave, 0 Write
+    if (IIC_ack_input()==0)
+        {
+			IIC_send_byte(direccion_int);
+			if (IIC_ack_input()==0)
+				{
+					IIC_send_byte(dato);
+					if (IIC_ack_input()==0)
+						 {
+						  IIC_stop_bit();
+						 }
+				}
+		}
+}
+
+unsigned char IIC_read_TCS1(unsigned char direccion_int)
+{
+
+    IIC_start_bit();
+    IIC_send_byte(0b01010010);   //1010 0000. 1010. ID Tipo Mem, 000: Slave, 0 Write
+    if (IIC_ack_input()==0)
+        {
+		IIC_send_byte(direccion_int);
+		if (IIC_ack_input()==0)
+			{
+				IIC_start_bit();
+				IIC_send_byte(0b01010011);  //read
+				if (IIC_ack_input()==0)
+					{
+						//movimiento
+					    datos_tx[0] = IIC_rec_byte();
+					    //tiempo
+					    datos_tx[1] = IIC_rec_byte();
+					    //movimiento
+					    datos_tx[2] = IIC_rec_byte();
+					    //tiempo
+					    datos_tx[3] = IIC_rec_byte();
+					    //movimiento
+					    datos_tx[4] = IIC_rec_byte();
+					    //tiempo
+					    datos_tx[5] = IIC_rec_byte();
+					    //movimiento
+					    datos_tx[6] = IIC_rec_byte();
+					    //tiempo
+					    datos_tx[7] = IIC_rec_byte();
+
+						IIC_ack_output(1);
+						IIC_stop_bit();
+					}
+			}
+		}
+   //return
+}
+
+
+
+
+int main(void)
+{
+	UART_init();
+	PORTC_init();
+	LPIT0_Ch0_init();
+	LPIT0_Ch1_init();
+	LPIT0_Ch2_init();
+	LPIT0_Ch3_init();
+
+
+	//I2C Hardware
+
+    while(1){
+
+    }
+	return 0;
+}

@@ -1,18 +1,12 @@
-11:46:07 **** Incremental Build of configuration Debug for project Uart_TX_Polling_ISR ****
+18:29:27 **** Incremental Build of configuration Debug for project Uart_TX_Polling_ISR ****
 make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
-Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c:11:1: error: initializer element is not constant
- int array2[]={x,y,z};
- ^
-../src/main.c:11:1: error: (near initialization for 'array2[0]')
-../src/main.c:11:1: error: initializer element is not constant
-../src/main.c:11:1: error: (near initialization for 'array2[1]')
-../src/main.c:11:1: error: initializer element is not constant
-../src/main.c:11:1: error: (near initialization for 'array2[2]')
-make: *** [src/subdir.mk:35: src/main.o] Error 1
+Executing target #6 Uart_TX_Polling_ISR.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Uart_TX_Polling_ISR.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1672	     20	   3080	   4772	   12a4	Uart_TX_Polling_ISR.elf
+Finished building: Uart_TX_Polling_ISR.siz
+ 
 
-11:46:08 Build Finished (took 1s.82ms)
+18:29:28 Build Finished (took 591ms)
 

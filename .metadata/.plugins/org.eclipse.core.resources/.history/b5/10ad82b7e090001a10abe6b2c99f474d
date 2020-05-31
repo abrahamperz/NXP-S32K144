@@ -1,9 +1,0 @@
--c
--I"D:/Documentos/SemestresTec/Semestre_i/Microcontroladores/NXP-S32K144/Giroscopio_I2C/include"
--x assembler-with-cpp
--O0
--g3
--mcpu=cortex-m4
--mthumb
--specs=rdimon.specs
---sysroot="D:/NXP/S32DS_ARM_v2018.R1/Cross_Tools/gcc-arm-none-eabi-4_9/arm-none-eabi/newlib"

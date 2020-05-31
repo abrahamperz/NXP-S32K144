@@ -1,0 +1,280 @@
+/*
+ * rpm_app.c
+ *
+ *  Created on: 24/05/2020
+ *      Author: abraham
+ */
+
+
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+
+#define pulsos 32
+
+unsigned short frec_1;
+unsigned short frec_0;
+unsigned short rpm_1=0;
+unsigned short rpm_0=0;
+unsigned short t_viejo_1=0;
+unsigned short t_viejo_0=0;
+unsigned char rpm_ascii[]={"##### RPM1 ##### RPM0\n\r"};
+unsigned char j=0;
+
+#define T_1 1000
+#define T_0 1000
+unsigned char duty_cycle_1=0;
+unsigned char duty_cycle_0=50;
+unsigned char espejo_pin_1;
+unsigned char espejo_pin_0;
+unsigned char CW_1=0;
+unsigned char CW_0=0;
+unsigned char motor=0;
+
+
+void LPIT0_Ch0_IRQHandler (void)			//PARA MOTOR 1 y 0
+{
+	LPIT0->MSR=1;							//Borrar bandera
+	LPIT0->TMR[0].TCTRL&=~(1<<0);
+
+
+		if (CW_1==1)
+		{
+			PTC->PTOR=(1<<7)+(1<<6);
+			//PTC->PTOR|=(1<<3);
+		}
+		else
+		{
+			PTC->PTOR=(1<<15)+(1<<6);
+			//PTC->PTOR|=(1<<6);
+		}
+		//if (CW_0==1) PTC->PTOR=(1<<3);
+		//else PTC->PTOR=(1<<6);
+		if (espejo_pin_1==1)
+		{
+			espejo_pin_1=0;
+			LPIT0->TMR[0].TVAL=(((100-(unsigned int)duty_cycle_1)*T_1)/100);
+		}
+		else
+		{
+			espejo_pin_1=1;
+			LPIT0->TMR[0].TVAL=((((unsigned int)duty_cycle_1)*T_1)/100);
+		}
+
+
+
+	LPIT0->TMR[0].TCTRL|=(1<<0);       //Enable->Trigger
+}
+
+/*
+void LPIT0_Ch1_IRQHandler (void)			//PARA MOTOR 0
+{
+	LPIT0->MSR=1;							//Borrar bandera
+	LPIT0->TMR[1].TCTRL&=~(1<<0);
+	if (CW_0==1) PTC->PTOR=(1<<3);
+	else PTC->PTOR=(1<<6);
+	if (espejo_pin_0==1)
+		{
+			espejo_pin_0=0;
+			LPIT0->TMR[1].TVAL=(((100-(unsigned int)duty_cycle_0)*T_0)/100);
+		}
+	else
+		{
+			espejo_pin_0=1;
+			LPIT0->TMR[1].TVAL=((((unsigned int)duty_cycle_0)*T_0)/100);
+		}
+	LPIT0->TMR[1].TCTRL|=(1<<0);       //Enable->Trigger
+}
+*/
+
+void delay (void)
+{
+	unsigned long i=1000000;
+
+	do{}while (--i);
+}
+
+
+void FTM2_Ch0_Ch1_IRQHandler (void)
+{	unsigned short delta_T_1;
+	unsigned short delta_T_0;
+
+	if ((FTM2->CONTROLS[1].CnSC & (1<<7))==(1<<7))
+	{
+		(void) FTM2->CONTROLS[1].CnSC;			//1er paso para borrar bandera
+		FTM2->CONTROLS[1].CnSC&=~(1<<7);		//2o. paso para borrar bandera
+		delta_T_1=FTM2->CONTROLS[1].CnV-t_viejo_1;	// delta_T=T2-T1
+		frec_1=1000000/delta_T_1;
+		rpm_1=frec_1*(60/pulsos);
+		t_viejo_1=FTM2->CONTROLS[1].CnV;
+
+
+		if (rpm_1!=0) {rpm_ascii[4]=rpm_1%10+'0';}
+		else {rpm_ascii[4]=' ';}
+		rpm_1=rpm_1/10;
+		if (rpm_1!=0) {rpm_ascii[3]=rpm_1%10+'0';}		//sustituir rmp en ascii
+		else {rpm_ascii[3]=' ';}
+		rpm_1=rpm_1/10;
+		if (rpm_1!=0) {rpm_ascii[2]=rpm_1%10+'0';}
+		else {rpm_ascii[2]=' ';}
+		rpm_1=rpm_1/10;
+		if (rpm_1!=0) {rpm_ascii[1]=rpm_1%10+'0';}
+		else {rpm_ascii[1]=' ';}
+		rpm_1=rpm_1/10;
+		if (rpm_1!=0) {rpm_ascii[0]=rpm_1+'0';}
+		else {rpm_ascii[0]=' ';}
+
+		//LPUART2->CTRL|=(1<<23);
+
+	}
+
+	if ((FTM2->CONTROLS[0].CnSC & (1<<7))==(1<<7))
+	{
+		(void) FTM2->CONTROLS[0].CnSC;			//1er paso para borrar bandera
+		FTM2->CONTROLS[0].CnSC&=~(1<<7);		//2o. paso para borrar bandera
+		delta_T_0=FTM2->CONTROLS[0].CnV-t_viejo_0;	// delta_T=T2-T1
+		frec_0=1000000/delta_T_0;
+		rpm_0=frec_0*(60/pulsos);
+		t_viejo_0=FTM2->CONTROLS[0].CnV;
+
+		if (rpm_0!=0) {rpm_ascii[15]=rpm_0%10+'0';}
+		else {rpm_ascii[15]=' ';}
+		rpm_0=rpm_0/10;
+		if (rpm_0!=0) {rpm_ascii[14]=rpm_0%10+'0';}		//sustituir rmp en ascii
+		else {rpm_ascii[14]=' ';}
+		rpm_0=rpm_0/10;
+		if (rpm_0!=0) {rpm_ascii[13]=rpm_0%10+'0';}
+		else {rpm_ascii[13]=' ';}
+		rpm_0=rpm_0/10;
+		if (rpm_0!=0) {rpm_ascii[12]=rpm_0%10+'0';}
+		else {rpm_ascii[12]=' ';}
+		rpm_0=rpm_0/10;
+		if (rpm_0!=0) {rpm_ascii[11]=rpm_0+'0';}
+		else {rpm_ascii[11]=' ';}
+
+		//LPUART2->CTRL|=(1<<23);
+
+	}
+	LPUART2->CTRL|=(1<<23);
+}
+
+
+void LPUART2_RxTx_IRQHandler (void)
+{
+	if ((LPUART2->STAT & (1<<23))==(1<<23))						//Handler ISR para Tx
+		{
+																	//enviar rpm_ascii por LPUART2
+			LPUART2->DATA=rpm_ascii[j++];
+			if (rpm_ascii[j]==0)
+			{
+				LPUART2->CTRL&=~(1<<23);
+				j=0;
+			}
+		}
+}
+
+
+void LPIT0_Ch0_init(void)
+{
+
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	//SCG->SIRCDIV=(1<<8);  //8MHz/1
+
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[0].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
+	LPIT0->TMR[0].TVAL=(((100-(unsigned int)duty_cycle_1)*T_1)/100);
+	LPIT0->MIER=1;
+	//LPIT0->TMR[0].TCTRL|=1;
+	S32_NVIC->ISER[48/32]=(1<<(48%32));
+
+}
+
+
+void LPIT0_Ch1_init(void)
+{
+
+	PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+    PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+	//SCG->SIRCDIV=(1<<8);  //8MHz/1
+
+	LPIT0->MCR=1;		//M_CEN=1;
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	asm("nop");
+	LPIT0->TMR[1].TCTRL=(0<<24)+(1<<23)+(1<<17)+(1<<18);
+	LPIT0->TMR[1].TVAL=(((100-(unsigned int)duty_cycle_0)*T_0)/100);
+	LPIT0->MIER|=(1<<2);
+	//LPIT0->TMR[0].TCTRL|=1;
+	S32_NVIC->ISER[49/32]=(1<<(49%32));
+
+}
+
+void init_rpm(void){
+
+	PCC->PCCn[PCC_PORTA_INDEX]=1<<30;
+		PORTA->PCR[0]=2<<8;						//FTM2_CH1
+		PORTA->PCR[9]=2<<8;						//LPUART2 TX
+		PORTA->PCR[8]=2<<8;						//LPUART2 RX
+
+		PCC->PCCn[PCC_PORTC_INDEX]=1<<30;
+		PORTC->PCR[3]=1<<8;						//IN3
+		PORTC->PCR[5]=2<<8;						//FTM2_CH0
+		PORTC->PCR[6]=1<<8;						//IN4
+		PORTC->PCR[7]=(1<<8);					//IN1
+		PORTC->PCR[15]=(1<<8);					//IN2
+
+		PTC->PDDR=(1<<3)+(1<<6)+(1<<7)+(1<<15);
+		PTC->PDOR=0;
+		espejo_pin_1=0;
+		espejo_pin_0=0;
+
+
+		SCG->SIRCDIV=(1<<8)+(1<<0);				//SIRCDIV1: 8 MHz/1 (125 ns)
+												////SIRCDIV2: 8 MHz/1
+
+	    PCC->PCCn[PCC_FTM2_INDEX]=2<<24;		//SIRCDIV1
+		PCC->PCCn[PCC_FTM2_INDEX]|=1<<30;
+
+		FTM2->SC=(3<<3)+3;						//3<<3 (Reloj externo SIRCDIV1)
+												// 3: preescaler 8 (1MHz, 1 us)
+		FTM2->CONTROLS[1].CnSC=(1<<6)+(1<<2);	//0001 MSB:MSA, ELSB:ELSA. hab Intr
+
+		PCC->PCCn[PCC_LPUART2_INDEX]=2<<24;		//SIRCDIV2
+		PCC->PCCn[PCC_LPUART2_INDEX]|=1<<30;
+		LPUART2->BAUD|=52;						//BAUD_SRG=CLK_UART/(16*9600)
+		LPUART2->CTRL|=(1<<19)+(1<<18);	//TE=RE=1, hab. Tx interrupt
+		//LPUART2->CTRL|=(1<<23);
+
+		//LPIT0_Ch0_init();
+		//LPIT0_Ch1_init();
+
+
+		PCC->PCCn[PCC_LPIT_INDEX]=(2<<24);
+		PCC->PCCn[PCC_LPIT_INDEX]|=(1<<30);
+		//SCG->SIRCDIV=(4<<8);  //8MHz/8
+		LPIT0->MCR|=1;           //M_CEN=1;
+		asm("nop");
+		asm("nop");
+		asm("nop");
+		asm("nop");
+		LPIT0->TMR[0].TCTRL=(0<<24)+(1<<23)+(1<<18)+(1<<17);
+		//LPIT0->TMR[1].TCTRL=(0<<24)+(1<<23)+(1<<18)+(1<<17);
+
+		LPIT0->TMR[0].TVAL=(((100-(unsigned int)duty_cycle_1)*T_1)/100);
+		//LPIT0->TMR[1].TVAL=(((100-(unsigned int)duty_cycle_0)*T_0)/100);
+		LPIT0->MIER=1;
+		//Interrupt Enable TMR0
+		LPIT0->TMR[0].TCTRL|=1;            //Hab conteo
+		//LPIT0->TMR[1].TCTRL|=1;            //Hab conteo
+
+
+		S32_NVIC->ISER[111/32]=1<<(111%32);		//Hab FTM2 Ch0 y CH1
+		S32_NVIC->ISER[35/32]=1<<(35%32);		//Hab LPUART2
+		S32_NVIC->ISER[48/32]=(1<<(48%32));		//Hab LPIT0_Ch0
+		//S32_NVIC->ISER[49/32]=(1<<(49%32));		//Hab LPIT0_Ch0
+}
+

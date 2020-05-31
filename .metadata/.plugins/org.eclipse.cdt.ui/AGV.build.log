@@ -1,0 +1,12 @@
+22:30:41 **** Incremental Build of configuration Debug for project AGV ****
+make -j4 all 
+Executing target #9 AGV.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  AGV.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14760	     60	   3224	  18044	   467c	AGV.elf
+Finished building: AGV.siz
+ 
+
+22:30:41 Build Finished (took 558ms)
+

@@ -1,0 +1,15 @@
+/*
+ * prueba.h
+ *
+ *  Created on: 24/05/2020
+ *      Author: abraham
+ */
+
+#ifndef PRUEBA_H_
+#define PRUEBA_H_
+
+#include "prueba.c
+"
+void prueba (void);
+
+#endif /* PRUEBA_H_ */

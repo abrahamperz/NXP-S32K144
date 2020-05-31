@@ -1,0 +1,87 @@
+15:15:45 **** Build of configuration Debug for project Semestrei ****
+make -j4 all 
+Building file: ../Project_Settings/Startup_Code/startup.c
+Building file: ../Project_Settings/Startup_Code/startup_S32K144.S
+Building file: ../Project_Settings/Startup_Code/system_S32K144.c
+Executing target #1 ../Project_Settings/Startup_Code/startup.c
+Executing target #3 ../Project_Settings/Startup_Code/system_S32K144.c
+Executing target #2 ../Project_Settings/Startup_Code/startup_S32K144.S
+Invoking: Standard S32DS C Compiler
+Building file: ../src/I2C_giroscopio.c
+Invoking: Standard S32DS Assembler
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/startup_S32K144.args" -o "Project_Settings/Startup_Code/startup_S32K144.o" "../Project_Settings/Startup_Code/startup_S32K144.S"
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/system_S32K144.args" -MMD -MP -MF"Project_Settings/Startup_Code/system_S32K144.d" -MT"Project_Settings/Startup_Code/system_S32K144.o" -o "Project_Settings/Startup_Code/system_S32K144.o" "../Project_Settings/Startup_Code/system_S32K144.c"
+Executing target #4 ../src/I2C_giroscopio.c
+arm-none-eabi-gcc "@Project_Settings/Startup_Code/startup.args" -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/I2C_giroscopio.args" -MMD -MP -MF"src/I2C_giroscopio.d" -MT"src/I2C_giroscopio.o" -o "src/I2C_giroscopio.o" "../src/I2C_giroscopio.c"
+Finished building: ../Project_Settings/Startup_Code/startup_S32K144.S
+ 
+Building file: ../src/main.c
+Executing target #5 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/main.c:3:0:
+../src/rutas_app.h:17:22: warning: 'duty_cycle' initialized and declared 'extern'
+ extern unsigned char duty_cycle=50;
+                      ^
+../src/rutas_app.h:19:22: warning: 'i' initialized and declared 'extern'
+ extern unsigned char i=0;
+                      ^
+../src/rutas_app.h:20:22: warning: 'T' initialized and declared 'extern'
+ extern unsigned char T=100;
+                      ^
+../src/rutas_app.h:21:22: warning: 'data' initialized and declared 'extern'
+ extern unsigned char data=0;
+                      ^
+../src/rutas_app.h:22:22: warning: 'dato' initialized and declared 'extern'
+ extern unsigned char dato=0;
+                      ^
+Finished building: ../Project_Settings/Startup_Code/system_S32K144.c
+Finished building: ../Project_Settings/Startup_Code/startup.c
+ 
+ 
+Building file: ../src/rutas_app.c
+Executing target #6 ../src/rutas_app.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/rutas_app.args" -MMD -MP -MF"src/rutas_app.d" -MT"src/rutas_app.o" -o "src/rutas_app.o" "../src/rutas_app.c"
+Finished building: ../src/I2C_giroscopio.c
+Finished building: ../src/main.c
+ 
+ 
+Finished building: ../src/rutas_app.c
+ 
+Building target: Semestrei.elf
+Executing target #7 Semestrei.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Semestrei.elf" "@Semestrei.args"   
+./src/main.o:(.data.duty_cycle+0x0): multiple definition of `duty_cycle'
+./src/rutas_app.o:(.data.duty_cycle+0x0): first defined here
+./src/main.o:(.bss.i+0x0): multiple definition of `i'
+./src/rutas_app.o:(.bss.i+0x0): first defined here
+./src/main.o:(.data.T+0x0): multiple definition of `T'
+./src/rutas_app.o:(.data.T+0x0): first defined here
+./src/main.o:(.bss.data+0x0): multiple definition of `data'
+./src/rutas_app.o:(.bss.data+0x0): first defined here
+./src/main.o:(.bss.dato+0x0): multiple definition of `dato'
+./src/rutas_app.o:(.bss.dato+0x0): first defined here
+./src/I2C_giroscopio.o:(.data.dato+0x0): multiple definition of `dato'
+./src/rutas_app.o:(.bss.dato+0x0): first defined here
+d:/nxp/s32ds_arm_v2018.r1/cross_tools/gcc-arm-none-eabi-4_9/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld.exe: Warning: size of symbol `dato' changed from 1 in ./src/rutas_app.o to 4 in ./src/I2C_giroscopio.o
+./src/I2C_giroscopio.o:(.data.vel+0x0): multiple definition of `vel'
+./src/main.o:(.data.vel+0x0): first defined here
+./src/I2C_giroscopio.o:(.bss.i+0x0): multiple definition of `i'
+./src/rutas_app.o:(.bss.i+0x0): first defined here
+d:/nxp/s32ds_arm_v2018.r1/cross_tools/gcc-arm-none-eabi-4_9/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld.exe: Warning: size of symbol `i' changed from 1 in ./src/rutas_app.o to 2 in ./src/I2C_giroscopio.o
+./src/I2C_giroscopio.o:(.bss.error+0x0): multiple definition of `error'
+./src/main.o:(.bss.error+0x0): first defined here
+./src/I2C_giroscopio.o:(.bss.tx+0x0): multiple definition of `tx'
+./src/main.o:(.bss.tx+0x0): first defined here
+./src/I2C_giroscopio.o:(.bss.bandera+0x0): multiple definition of `bandera'
+./src/main.o:(.bss.bandera+0x0): first defined here
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:58: Semestrei.elf] Error 1
+
+15:15:47 Build Finished (took 1s.958ms)
+

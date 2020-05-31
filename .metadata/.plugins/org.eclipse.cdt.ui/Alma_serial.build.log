@@ -1,0 +1,24 @@
+19:21:13 **** Build of configuration Debug for project Alma_serial ****
+make -j4 all 
+Building file: ../src/main.c
+Executing target #4 ../src/main.c
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Alma_serial.elf
+Executing target #5 Alma_serial.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "Alma_serial.elf" "@Alma_serial.args"   
+Finished building target: Alma_serial.elf
+ 
+Executing target #6 Alma_serial.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  Alma_serial.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4456	     44	   3096	   7596	   1dac	Alma_serial.elf
+Finished building: Alma_serial.siz
+ 
+
+19:21:17 Build Finished (took 4s.362ms)
+

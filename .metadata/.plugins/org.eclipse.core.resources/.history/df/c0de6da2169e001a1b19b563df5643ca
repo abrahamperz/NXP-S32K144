@@ -1,0 +1,23 @@
+
+
+#include "S32K144.h" /* include peripheral declarations S32K144 */
+
+#include "rutas_app.h"
+//#include "I2C_giroscopio.h"
+
+
+
+int main(void)
+{
+
+	SIRC_div();
+	UART_init();
+	UART2_init();
+	PORTC_init();
+ 	LPIT0_Ch0_init();
+	LPI2C0_init();
+
+
+
+	return 0;
+}

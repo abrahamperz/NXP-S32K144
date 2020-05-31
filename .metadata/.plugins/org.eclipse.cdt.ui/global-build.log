@@ -1,21 +1,104 @@
-12:29:37 **** Incremental Build of configuration Debug for project Individual_mapas_app ****
+22:22:21 **** Incremental Build of configuration Debug for project AGV ****
 make -j4 all 
-Building file: ../src/main.c
-Executing target #4 ../src/main.c
+Building file: ../src/rutas_app.c
+Executing target #7 ../src/rutas_app.c
 Invoking: Standard S32DS C Compiler
-arm-none-eabi-gcc "@src/main.args" -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
+arm-none-eabi-gcc "@src/rutas_app.args" -MMD -MP -MF"src/rutas_app.d" -MT"src/rutas_app.o" -o "src/rutas_app.o" "../src/rutas_app.c"
+Finished building: ../src/rutas_app.c
  
-Building target: Individual_mapas_app.elf
-Executing target #5 Individual_mapas_app.elf
+Building target: AGV.elf
+Executing target #8 AGV.elf
 Invoking: Standard S32DS C Linker
-arm-none-eabi-gcc -o "Individual_mapas_app.elf" "@Individual_mapas_app.args"   
-Finished building target: Individual_mapas_app.elf
+arm-none-eabi-gcc -o "AGV.elf" "@AGV.args"   
+d:/nxp/s32ds_arm_v2018.r1/cross_tools/gcc-arm-none-eabi-4_9/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld.exe: Warning: size of symbol `datos_I2C' changed from 4 in ./src/rutas_app.o to 12 in ./src/I2C_giroscopio.o
+d:/nxp/s32ds_arm_v2018.r1/cross_tools/gcc-arm-none-eabi-4_9/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld.exe: Warning: alignment 1 of symbol `tx' in ./src/I2C_giroscopio.o is smaller than 4 in ./src/rutas_app.o
+d:/nxp/s32ds_arm_v2018.r1/cross_tools/gcc-arm-none-eabi-4_9/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld.exe: Warning: size of symbol `tx' changed from 4 in ./src/rutas_app.o to 1 in ./src/I2C_giroscopio.o
+Finished building target: AGV.elf
  
-Executing target #6 Individual_mapas_app.siz
+Executing target #9 AGV.siz
 Invoking: Standard S32DS Print Size
-arm-none-eabi-size --format=berkeley  Individual_mapas_app.elf 
+arm-none-eabi-size --format=berkeley  AGV.elf 
    text	   data	    bss	    dec	    hex	filename
-   2920	      4	   3080	   6004	   1774	Individual_mapas_app.elf
-Finished building: Individual_mapas_app.siz
+  14760	     60	   3224	  18044	   467c	AGV.elf
+Finished building: AGV.siz
+ 
+22:27:14 **** Incremental Build of configuration Debug for project AGV ****
+make -j4 all 
+Building file: ../src/I2C_giroscopio.c
+Building file: ../src/evasion_obstaculos.c
+Building file: ../src/rutas_app.c
+Executing target #4 ../src/I2C_giroscopio.c
+Executing target #5 ../src/evasion_obstaculos.c
+Executing target #7 ../src/rutas_app.c
+Invoking: Standard S32DS C Compiler
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/I2C_giroscopio.args" -MMD -MP -MF"src/I2C_giroscopio.d" -MT"src/I2C_giroscopio.o" -o "src/I2C_giroscopio.o" "../src/I2C_giroscopio.c"
+Invoking: Standard S32DS C Compiler
+arm-none-eabi-gcc "@src/evasion_obstaculos.args" -MMD -MP -MF"src/evasion_obstaculos.d" -MT"src/evasion_obstaculos.o" -o "src/evasion_obstaculos.o" "../src/evasion_obstaculos.c"
+arm-none-eabi-gcc "@src/rutas_app.args" -MMD -MP -MF"src/rutas_app.d" -MT"src/rutas_app.o" -o "src/rutas_app.o" "../src/rutas_app.c"
+../src/I2C_giroscopio.c:23:1: warning: initialization from incompatible pointer type
+ unsigned int* datos_I2C[3]={&I2C1,&I2C2,&I2C3};
+ ^
+../src/I2C_giroscopio.c:23:1: warning: (near initialization for 'datos_I2C[0]')
+../src/I2C_giroscopio.c:23:1: warning: initialization from incompatible pointer type
+../src/I2C_giroscopio.c:23:1: warning: (near initialization for 'datos_I2C[1]')
+../src/I2C_giroscopio.c:23:1: warning: initialization from incompatible pointer type
+../src/I2C_giroscopio.c:23:1: warning: (near initialization for 'datos_I2C[2]')
+Finished building: ../src/evasion_obstaculos.c
+Finished building: ../src/rutas_app.c
+ 
+ 
+Finished building: ../src/I2C_giroscopio.c
+ 
+Building target: AGV.elf
+Executing target #8 AGV.elf
+Invoking: Standard S32DS C Linker
+arm-none-eabi-gcc -o "AGV.elf" "@AGV.args"   
+d:/nxp/s32ds_arm_v2018.r1/cross_tools/gcc-arm-none-eabi-4_9/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld.exe: Warning: size of symbol `datos_I2C' changed from 4 in ./src/rutas_app.o to 12 in ./src/I2C_giroscopio.o
+d:/nxp/s32ds_arm_v2018.r1/cross_tools/gcc-arm-none-eabi-4_9/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld.exe: Warning: alignment 1 of symbol `tx' in ./src/I2C_giroscopio.o is smaller than 4 in ./src/rutas_app.o
+d:/nxp/s32ds_arm_v2018.r1/cross_tools/gcc-arm-none-eabi-4_9/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld.exe: Warning: size of symbol `tx' changed from 4 in ./src/rutas_app.o to 1 in ./src/I2C_giroscopio.o
+Finished building target: AGV.elf
+ 
+Executing target #9 AGV.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  AGV.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14760	     60	   3224	  18044	   467c	AGV.elf
+Finished building: AGV.siz
+ 
+22:27:59 **** Incremental Build of configuration Debug for project AGV ****
+make -j4 all 
+Executing target #9 AGV.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  AGV.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14760	     60	   3224	  18044	   467c	AGV.elf
+Finished building: AGV.siz
+ 
+22:28:28 **** Incremental Build of configuration Debug for project AGV ****
+make -j4 all 
+Executing target #9 AGV.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  AGV.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14760	     60	   3224	  18044	   467c	AGV.elf
+Finished building: AGV.siz
+ 
+22:28:30 **** Incremental Build of configuration Debug for project AGV ****
+make -j4 all 
+Executing target #9 AGV.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  AGV.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14760	     60	   3224	  18044	   467c	AGV.elf
+Finished building: AGV.siz
+ 
+22:30:41 **** Incremental Build of configuration Debug for project AGV ****
+make -j4 all 
+Executing target #9 AGV.siz
+Invoking: Standard S32DS Print Size
+arm-none-eabi-size --format=berkeley  AGV.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14760	     60	   3224	  18044	   467c	AGV.elf
+Finished building: AGV.siz
  
